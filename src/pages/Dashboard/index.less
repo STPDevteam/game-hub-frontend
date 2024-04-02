@@ -1,0 +1,135 @@
+.container-dashboard{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-size: 100%;
+    &>div{
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 4rem;
+        &:not(:first-of-type){
+            margin-top: 40px;
+        }
+    }
+    .section1{
+        min-height: 100vh;
+        width: 100%;
+        h1{
+            font-size: 64px;
+            font-weight: 600;
+            text-align: center;
+            padding-top: 200px;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;                
+        }
+        p{
+            font-size: 24px;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+    .section2{
+        h2{
+            color: #98E6FF;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .popular-game{
+            background: url('../../assets/images/forest-bg.png') no-repeat;
+            background-size: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 30px;
+            h3{
+                font-size: 24px;
+                font-weight: 700;
+                color: #fff;
+            }
+            p{
+                font-size: 16px;
+                font-weight: 400;
+                color: #fff;
+            }
+            &>div{
+                img{
+                    width: 100%;
+                }
+                &:last-of-type{
+                    padding: 30px 30px 30px 0;
+                }
+                &>div{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    &:first-of-type{
+                        display: grid;
+                        grid-template-columns: 128px 1fr;
+                        padding-bottom: 20px;
+                        border-bottom: 1px dotted #5E71B7 ;
+                        &>div{
+                            &:first-of-type{
+                                width: 128px;
+                                img{
+                                    width: 100%;
+                                }
+                            } 
+                        }
+                    }
+                    &:last-of-type{
+                        padding-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .section3{
+        h2{
+            color: #98E6FF;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .slick-list{
+            margin: 0 -15px;
+            .slick-slide{
+                border-radius: 20px;
+                overflow: hidden;
+                padding: 0 15px;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        .slick-prev:before, .slick-next:before{
+            display: none;
+        }
+        .slick-next{
+            background: #171D6F80;
+            border-radius: 20px;
+            width: 160px;
+            height: 140px;
+            right: -140px;
+        }
+    }
+    .section4{
+        h2{
+            color: #98E6FF;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        &>div{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
