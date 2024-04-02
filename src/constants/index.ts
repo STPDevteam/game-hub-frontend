@@ -1,8 +1,9 @@
-import { WETH as UWETH } from 'gamehubsdk'
+import { WETH } from 'gamehubsdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { ChainId } from './chainId'
 import { injected } from '../connectors'
-import BnbChain from 'assets/svg/bnb.svg'
+import BaseChain from 'assets/svg/base.svg'
+import MainnetChain from 'assets/svg/eth.png'
 
 export const timeframeOptions = {
   WEEK: '1 week',
@@ -110,17 +111,30 @@ export interface BaseChain {
 
 const initialChains: BaseChain[] = [
   {
-    id: ChainId.KLAY_TEST,
-    name: 'Klaytn Testnet Baobab',
-    tokenSymbol: 'KLAY',
-    token: 'KLAY',
-    wrappedTokenSymbol: 'WKLAY',
-    wrappedToken: '',
-    icon: BnbChain,
-    scanUrl: 'https://baobab.klaytnscope.com/',
-    scanName: 'Klaytnscope',
+    id: ChainId.MAINNET,
+    name: 'Mainnet',
+    tokenSymbol: 'ETH',
+    token: WETH[ChainId.MAINNET],
+    wrappedTokenSymbol: 'WETH',
+    wrappedToken: WETH[ChainId.MAINNET],
+    icon: MainnetChain,
+    scanUrl: 'https://etherscan.io/',
+    scanName: 'EtherScan',
     vmType: 'EVM',
-    rpcUrl: 'https://public-en-baobab.klaytn.net'
+    rpcUrl: 'https://mainnet.infura.io/v3/1d8efe3c81f6403fac6633ef69479a73',
+  },
+  {
+    id: ChainId.BASE,
+    name: 'Base',
+    tokenSymbol: 'ETH',
+    token: WETH[ChainId.BASE],
+    wrappedTokenSymbol: 'WETH',
+    wrappedToken: WETH[ChainId.BASE],
+    icon: BaseChain,
+    scanUrl: 'https://basescan.org/',
+    scanName: 'base scan',
+    vmType: 'EVM',
+    rpcUrl: 'https://base-mainnet.g.alchemy.com/v2/1a2r_yoKeGEi5H7fRuhstRl2ll0V-30t',
   }
 ]
 
@@ -135,10 +149,6 @@ export const NetworkContextName = 'NETWORK'
 
 export const Token_swap_contract_address: { [chainId in ChainId]?: string } = {
   [ChainId.KLAY_TEST]: '0xe36c51451Cc72De3Da6EB3B3b98DF461D018108D'
-}
-
-export const WETH = {
-  ...UWETH,
 }
 
 export const APR_URL = process.env.REACT_APP_API_URL || 'https://swap.dev.fish/'

@@ -156,10 +156,18 @@ const Btn = styled(ButtonGray)`
 
 const NETWORKS: any = [
   {
-    value: ChainId.KLAY_TEST,
+    value: ChainId.MAINNET,
     label: (
       <NetworkBox>
-        <img src={getChain(ChainId.KLAY_TEST)?.icon} />
+        <img src={getChain(ChainId.MAINNET)?.icon} />
+      </NetworkBox>
+    )
+  },
+  {
+    value: ChainId.BASE,
+    label: (
+      <NetworkBox>
+        <img src={getChain(ChainId.BASE)?.icon} />
       </NetworkBox>
     )
   }

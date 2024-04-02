@@ -34,7 +34,7 @@ export function getNetworkLibrary(): Web3Provider {
 }
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [ChainId.KLAY_TEST]
+  supportedChainIds: [ChainId.MAINNET, ChainId.BASE]
 })
 
 // mainnet only
