@@ -1,4 +1,4 @@
-.container-dashboard{
+.container-reward{
     width: 100%;
     height: 100%;
     margin: 0 auto;
@@ -7,15 +7,30 @@
     &>div{
         max-width: 1240px;
         margin: 0 auto;
-        padding: 200px 4rem 0;
-        display: grid;
-        grid-template-columns: 60% 40%;
-        gap: 20px;
+        padding: 0 4rem;
         &:not(:first-of-type){
             margin-top: 40px;
         }
     }
     .section1{
+        width: 100%;
+        h1{
+            font-size: 64px;
+            font-weight: 600;
+            text-align: center;
+            padding-top: 200px;
+            background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;                
+        }
+        p{
+            font-size: 24px;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+    .section2{
         &>div{
             background: #17193B;
             border-radius: 20px;
@@ -42,21 +57,25 @@
         }
         .slick-next{
             background: #171D6F80;
-            border-radius: 10px;
-            width: 72px;
-            height: 72px;
-            right: -30px;
-            svg{
-                width: 50px;
-                height: 50px;
-            }
+            border-radius: 20px;
+            width: 160px;
+            height: 140px;
+            right: -140px;
         }
     }
-    .right-content{
+    .section4{
         h2{
             color: #98E6FF;
-            font-size: 22px;
+            font-size: 30px;
             font-weight: 600;
+        }
+        &>div{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            img{
+                width: 100%;
+            }
         }
     }
 }

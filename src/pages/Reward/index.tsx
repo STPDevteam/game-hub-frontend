@@ -23,7 +23,7 @@ import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './index.less'
 
 
-export default function Dashboard() {
+export default function Reward() {
   const { account, chainId, library } = useActiveWeb3React()
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
@@ -41,8 +41,8 @@ export default function Dashboard() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     responsive: [
       {
         breakpoint: 1024,
@@ -73,30 +73,40 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="container-dashboard">
+    <div className="container-reward">
+      <div className='section1'>
+        <h1>Rewards</h1>
+        <p>Join Clique early access and earn NFTs</p>
+      </div>
+      <div className='section2'>
         <div>
-            <div className='section1'>
-                <div>
-                    <h2>AWNS</h2>
-                    <Slider {...settings}>
-                        <div>
-                        <img src={UpcomingGame1} alt="" />
-                        </div>
-                        <div>
-                        <img src={UpcomingGame2} alt="" />
-                        </div>
-                        <div>
-                        <img src={UpcomingGame3} alt="" />
-                        </div>
-                    </Slider>
-                </div>
+            <h2>AWNS</h2>
+          <Slider {...settings}>
+            <div>
+              <img src={UpcomingGame1} alt="" />
             </div>
-            <div className='right-content'>
-                <div>
-                    <h2>FAQ</h2>
-                </div>
+            <div>
+              <img src={UpcomingGame2} alt="" />
             </div>
+            <div>
+              <img src={UpcomingGame3} alt="" />
+            </div>
+          </Slider>
         </div>
+      </div>
+      <div className='section4'>
+        <h2>All Games</h2>
+        <div>
+          <div><img src={Game1} alt="" /></div>
+          <div><img src={Game2} alt="" /></div>
+          <div><img src={Game3} alt="" /></div>
+          <div><img src={Game4} alt="" /></div>
+          <div><img src={Game5} alt="" /></div>
+          <div><img src={Game6} alt="" /></div>
+          <div><img src={Game7} alt="" /></div>
+          <div><img src={Game8} alt="" /></div>
+        </div>
+      </div>
     </div>
   )
 }
