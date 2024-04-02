@@ -3,22 +3,14 @@ import styled from 'styled-components'
 import Slider from "react-slick";
 import { useActiveWeb3React } from '../../hooks'
 import EternaLegacyImg from 'assets/images/eterna_legacy.png'
-import Forest1 from 'assets/images/forest1.png'
-import Forest2 from 'assets/images/forest2.png'
-import Forest3 from 'assets/images/forest3.png'
-import Forest4 from 'assets/images/forest4.png'
-import Forest5 from 'assets/images/forest5.png'
+import Awns from 'assets/images/awns.png'
+import Console1 from 'assets/images/console1.png'
+import Console2 from 'assets/images/console2.png'
+import Console3 from 'assets/images/console3.png'
+import Console4 from 'assets/images/console4.png'
 import UpcomingGame1 from 'assets/images/upcoming_game_1.png'
 import UpcomingGame2 from 'assets/images/upcoming_game_2.png'
 import UpcomingGame3 from 'assets/images/upcoming_game_3.png'
-import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
-import Game3 from 'assets/images/game_3.png'
-import Game4 from 'assets/images/game_4.png'
-import Game5 from 'assets/images/game_5.png'
-import Game6 from 'assets/images/game_6.png'
-import Game7 from 'assets/images/game_7.png'
-import Game8 from 'assets/images/game_8.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './index.less'
 
@@ -38,6 +30,40 @@ export default function Dashboard() {
     );
   }
   const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ],
+    nextArrow: <SampleNextArrow />,
+  };
+  const settings2 = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -75,18 +101,35 @@ export default function Dashboard() {
   return (
     <div className="container-dashboard">
         <div>
-            <div className='section1'>
-                <div>
+            <div className='left-content'>
+                <div className='section1'>
                     <h2>AWNS</h2>
                     <Slider {...settings}>
                         <div>
-                        <img src={UpcomingGame1} alt="" />
+                        <img src={Awns} alt="" />
                         </div>
                         <div>
-                        <img src={UpcomingGame2} alt="" />
+                        <img src={Awns} alt="" />
                         </div>
                         <div>
-                        <img src={UpcomingGame3} alt="" />
+                        <img src={Awns} alt="" />
+                        </div>
+                    </Slider>
+                </div>
+                <div className='section1'>
+                    <h2>Game Console</h2>
+                    <Slider {...settings2}>
+                        <div>
+                            <img src={Console1} alt="" />
+                        </div>
+                        <div>
+                            <img src={Console2} alt="" />
+                        </div>
+                        <div>
+                            <img src={Console3} alt="" />
+                        </div>
+                        <div>
+                            <img src={Console4} alt="" />
                         </div>
                     </Slider>
                 </div>
@@ -94,6 +137,12 @@ export default function Dashboard() {
             <div className='right-content'>
                 <div>
                     <h2>FAQ</h2>
+                    <ul>
+                        <li>Ways to level up quickly</li>
+                        <li>How to sell game assets?</li>
+                        <li>What are the points for?</li>
+                        <li>How to redeem Ancient Forest points?</li>
+                    </ul>
                 </div>
             </div>
         </div>
