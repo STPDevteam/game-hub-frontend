@@ -28,7 +28,6 @@ const BodyWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 10;
 `
 
 const Marginer = styled.div`

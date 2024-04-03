@@ -1,10 +1,10 @@
 import { ChainId } from 'constants/chainId';
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router'
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, SwapOutlined } from '@ant-design/icons';
 import styled from 'styled-components'
 import { Select, Space } from 'antd';
 import { getChain } from 'constants/index'
@@ -34,7 +34,11 @@ const HeaderFrame = styled.div`
   width: 100%;
   top: 0;
   position: absolute;
-  z-index: 2;
+  z-index: 1000;
+  &.sticky{
+    background: var(--background);
+    position: fixed;
+  }
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 12px;
     width: calc(100%);
@@ -60,6 +64,7 @@ const HeaderNavBox = styled.div`
   gap: 20px;
   padding: 0 20px;
   background-color: rgba(255,255,255, 0.08);
+  border: 1px solid rgba(255,255,255, 0.14);
   border-radius: 20px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     flex-direction: column;
@@ -93,11 +98,9 @@ const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${({ theme, active }) => (!active ? theme.bg1 : theme.bg3)};
   border-radius: 6px;
   white-space: nowrap;
   width: 100%;
-
   :focus {
     border: 1px solid blue;
   }
@@ -110,35 +113,38 @@ const TestnetWrapper = styled.div`
   pointer-events: auto;
   .chainSelect{
     .ant-select-selector{
-      border-radius: 6px!important;
-      height: 44px!important;
-      border-radius: 8px;
-      padding: 0 10px;
-      background-color: ${({ theme }) => theme.bg2}!important;
+      border-radius: 25px!important;
+      height: 50px!important;
+      width: 50px!important;
+      background-color: rgba(0, 0, 0, 0.4)!important;
+      border: 1px solid var(--border-color)!important;
       .ant-select-selection-item{
-        line-height: 44px;
+        line-height: 45px;
+        padding-right: 0!important;
       }
     }
     .ant-select-arrow{
-      right: 11px!important;
+      display: flex;
+      justify-content: center;
+      top:auto;
+      bottom: 8px;
+      left: 36px;
+      height: 15px;
+      width: 15px;
+      border-radius: 20px;
+      background: #0049C6;
     }
   }
 `
 
-const NetworkCard = styled(YellowCard)`
-  width: fit-content;
-  margin-right: 10px;
-  border-radius: 12px;
-  padding: 8px 12px;
-`
 
 const NetworkBox = styled.div`
-  width: fit-content;
-  border-radius: 12px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  height: 100%;
   img{
-    width: 20px;
+    width: 30px;
   }
 `
 
@@ -248,28 +254,27 @@ export default function Header() {
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isNavVisible, setNavVisibility] = useState(false);
   const [networkValue, setNetworkValue] = useState(chainId)
+  const [isNavbarSticky, setIsNavbarSticky] = useState(false);
+  const headerRef: any = useRef(null);
 
-  // if(typeof(chainId) !== 'undefined' && account !== null && chainId === 42220){
-  //   window.location.href = 'https://swap-celo.spacefi.io'
-  // }
-  // if(typeof(chainId) !== 'undefined' && account !== null && chainId === 44787){
-  //   window.location.href = 'https://swap-celoalfa.spacefi.io'
-  // }
-  // if(typeof(chainId) !== 'undefined' && account !== null && chainId === 9000){
-  //   window.location.href = 'https://swap-tevmos.spacefi.io'
-  // }
-  // if(typeof(chainId) !== 'undefined' && account !== null && chainId === 9001){
-  //   window.location.href = 'https://swap-evmos.spacefi.io'
-  // }
-  // if(typeof(chainId) !== 'undefined' && account !== null && chainId === 324){
-  //   window.location.href = 'https://swap-zksync.spacefi.io'
-  // }
+  const fixNavBar = () => {
+    if (headerRef.current) {
+        setIsNavbarSticky(window.pageYOffset > headerRef.current.offsetTop)
+    }
+}
 
   useEffect(() => {
     if(chainId){
       switchNetwork(chainId)
     }
   }, [chainId])
+
+  useEffect(() => {
+    window.addEventListener('scroll', fixNavBar);
+    return () => {
+      window.removeEventListener('scroll', fixNavBar);
+    }
+  },[])
 
   const toggleNav = () => {
     setNavVisibility(!isNavVisible);
@@ -310,7 +315,7 @@ export default function Header() {
   };
 
   return (
-    <HeaderFrame>
+    <HeaderFrame ref={headerRef} className={`${isNavbarSticky ? 'sticky' : ''}`}>
       <RowBetweenDiv>
         <button onClick={toggleNav} className="Burger">
           <MenuOutlined />
@@ -330,9 +335,9 @@ export default function Header() {
 
         <HeaderNavBox className={`${isNavVisible ? 'show': 'hide'}`}>
           <StyledNavLink 
-            onClick={() => {setNavVisibility(false)}} 
+            // onClick={() => {setNavVisibility(false)}} 
             to={'/dashboard'}
-            isActive={(match, { pathname }) =>
+            isActive={(match: boolean, { pathname }: any) =>
               Boolean(match) ||
               pathname.startsWith('/dashboard')
             }
@@ -341,8 +346,8 @@ export default function Header() {
           </StyledNavLink>
           <StyledNavLink
             to={'/game'}
-            onClick={() => {setNavVisibility(false)}}
-            isActive={(match, { pathname }) =>
+            // onClick={() => {setNavVisibility(false)}}
+            isActive={(match: boolean, { pathname }: any) =>
               Boolean(match) ||
               pathname.startsWith('/game')
             }
@@ -350,19 +355,19 @@ export default function Header() {
             Game
           </StyledNavLink>
           <StyledNavLink
-            onClick={() => {setNavVisibility(false)}}
+            // onClick={() => {setNavVisibility(false)}}
             to={'/marketplace'}
           >
             Marketplace
           </StyledNavLink>
           <StyledNavLink
-            onClick={() => {setNavVisibility(false)}}
+            // onClick={() => {setNavVisibility(false)}}
             to={'/guide'}
           >
             Guide
           </StyledNavLink>
           <StyledNavLink
-            onClick={() => {setNavVisibility(false)}}
+            // onClick={() => {setNavVisibility(false)}}
             to={'/reward'}
           >
             Reward
@@ -388,6 +393,7 @@ export default function Header() {
                   value={chainId}
                   className='chainSelect'
                   dropdownStyle={{minWidth: '130px'}}
+                  suffixIcon={<SwapOutlined style={{color: '#fff', fontSize: '9px'}} />}
                 />
               }
             </TestnetWrapper>

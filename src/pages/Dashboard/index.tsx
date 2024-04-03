@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
+import { Tabs } from 'antd';
+import type { TabsProps } from 'antd';
 import { useActiveWeb3React } from '../../hooks'
 import EternaLegacyImg from 'assets/images/eterna_legacy.png'
 import Awns from 'assets/images/awns.png'
@@ -26,6 +28,29 @@ export default function Dashboard() {
       </button>
     );
   }
+
+  const onChange = (key: string) => {
+    console.log(key);
+  };
+  
+  const items: TabsProps['items'] = [
+    {
+      key: '1',
+      label: 'Tab 1',
+      children: 'Content of Tab Pane 1',
+    },
+    {
+      key: '2',
+      label: 'Tab 2',
+      children: 'Content of Tab Pane 2',
+    },
+    {
+      key: '3',
+      label: 'Tab 3',
+      children: 'Content of Tab Pane 3',
+    },
+  ];
+
   const settings = {
     dots: false,
     infinite: true,
@@ -129,6 +154,9 @@ export default function Dashboard() {
                             <img src={Console4} alt="" />
                         </div>
                     </Slider>
+                </div>
+                <div>
+                  <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
                 </div>
             </div>
             <div className='right-content'>
