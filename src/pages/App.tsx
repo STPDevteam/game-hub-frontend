@@ -2,7 +2,6 @@ import React, { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import WalletProvider from 'contexts/AppContext'
-import { ChakraProvider } from '@chakra-ui/react'
 import Header from '../components/Header'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -41,7 +40,6 @@ export default function App() {
     <Suspense fallback={null}>
       <HashRouter>
         <Route component={DarkModeQueryParamReader} />
-        <ChakraProvider>
           <WalletProvider>
             <AppWrapper>
               <Header />
@@ -58,7 +56,6 @@ export default function App() {
               </BodyWrapper>
             </AppWrapper>
           </WalletProvider>
-        </ChakraProvider>
       </HashRouter>
     </Suspense>
   )
