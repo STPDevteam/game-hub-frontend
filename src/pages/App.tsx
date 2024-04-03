@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import WalletProvider from 'contexts/AppContext'
+import { ChakraProvider } from '@chakra-ui/react'
 import Header from '../components/Header'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
@@ -20,12 +21,6 @@ const AppWrapper = styled.div`
   overflow-x: hidden;
 `
 
-const HeaderWrapper = styled.div`
-  ${({ theme }) => theme.flexRowNoWrap}
-  width: 100%;
-  justify-content: space-between;
-`
-
 const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,12 +30,6 @@ const BodyWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-      padding: 16px;
-  `};
-
-  z-index: 1;
 `
 
 const Marginer = styled.div`
@@ -52,24 +41,24 @@ export default function App() {
     <Suspense fallback={null}>
       <HashRouter>
         <Route component={DarkModeQueryParamReader} />
-        <WalletProvider>
-          <AppWrapper>
-            <HeaderWrapper>
+        <ChakraProvider>
+          <WalletProvider>
+            <AppWrapper>
               <Header />
-            </HeaderWrapper>
-            <BodyWrapper>
-              <Popups />
-              <Web3ReactManager>
-                <Switch>
-                  <Route exact strict path="/" component={Game} />
-                  <Route exact strict path="/game" component={Game} />
-                  <Route exact strict path="/dashboard" component={Dashboard} />
-                </Switch>
-              </Web3ReactManager>
-              <Marginer />
-            </BodyWrapper>
-          </AppWrapper>
-        </WalletProvider>
+              <BodyWrapper>
+                <Popups />
+                <Web3ReactManager>
+                  <Switch>
+                    <Route exact strict path="/" component={Game} />
+                    <Route exact strict path="/game" component={Game} />
+                    <Route exact strict path="/dashboard" component={Dashboard} />
+                  </Switch>
+                </Web3ReactManager>
+                <Marginer />
+              </BodyWrapper>
+            </AppWrapper>
+          </WalletProvider>
+        </ChakraProvider>
       </HashRouter>
     </Suspense>
   )
