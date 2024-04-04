@@ -9,17 +9,27 @@
         margin: 0 auto;
         padding: 200px 4rem 0;
         display: grid;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 65% 35%;
         gap: 20px;
         &:not(:first-of-type){
             margin-top: 40px;
         }
     }
+    .extra-btn{
+        color: #98E6FF;
+        font-size: 16px;
+        font-weight: 600; 
+        float: right;
+        cursor: pointer;
+        margin-top: 10px;
+    }
     .section1{
         background: #17193B;
         border-radius: 20px;
         padding: 30px;
-        margin-top: 20px;
+        &:not(:first-of-type){
+            margin-top: 20px;
+        }
         h2{
             color: #98E6FF;
             font-size: 30px;
@@ -50,12 +60,99 @@
                 height: 50px;
             }
         }
+        .ant-tabs{
+            .ant-tabs-tab-btn{
+                color: #949CB9;
+                font-size: 16px;
+                font-weight: 500;
+            }
+            .ant-tabs-tab-active{
+                .ant-tabs-tab-btn{
+                    color: #fff;
+                }
+            }
+            .ant-tabs-ink-bar{
+                background: #A7F46A;
+            }
+            & > .ant-tabs-nav::before{
+                border-bottom: 1px solid #2F336C;
+            }
+        }
+        .games{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            img{
+                width: 100%;
+            }
+        }
     }
     .right-content{
         h2{
             color: #98E6FF;
             font-size: 22px;
             font-weight: 600;
+        }
+        &>div{
+            background: linear-gradient(270deg, #030520 61.06%, #00034D 100%);
+            border-left: 4px solid #0C2A96;
+            padding: 24px 30px;
+            &:not(:first-of-type){
+                margin-top: 20px;
+            }
+            ul{
+                list-style: none;
+                padding-left: 0;
+                li{
+                     a{
+                        display: block;
+                        font-size: 18px;
+                        padding: 28px 0;
+                        color: #fff;
+                        border-bottom: 1px solid #0D1B4A;
+                        cursor: pointer;
+                        position: relative;
+                        z-index: 2;
+                        svg{
+                            position: absolute;
+                            top: 20px;
+                            right: 20px;
+                            z-index: -1;
+                        }
+                    }
+                }
+            }
+        }
+        .popular-games{
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            &>div{
+                display: flex;
+                gap:  20px;
+                img{
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 10px;
+                }
+            }
+            h3{
+                font-size: 18px;
+                color: #fff;
+            }
+            p{
+                font-size: 16px;
+                color: #949CB9;
+            }
+        }
+        .nfts{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            img{
+               width: 100%;
+            }
         }
     }
 }

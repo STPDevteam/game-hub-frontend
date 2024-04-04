@@ -110,19 +110,21 @@ export default function Game() {
         </div>
       </div>
       <div className='section3'>
-        <h2>Upcoming Games</h2>
         <div>
-          <Slider {...settings}>
-            <div>
-              <img src={UpcomingGame1} alt="" />
-            </div>
-            <div>
-              <img src={UpcomingGame2} alt="" />
-            </div>
-            <div>
-              <img src={UpcomingGame3} alt="" />
-            </div>
-          </Slider>
+          <h2>Upcoming Games</h2>
+          <div>
+            <Slider {...settings}>
+              <div>
+                <img src={UpcomingGame1} alt="" />
+              </div>
+              <div>
+                <img src={UpcomingGame2} alt="" />
+              </div>
+              <div>
+                <img src={UpcomingGame3} alt="" />
+              </div>
+            </Slider>
+          </div>
         </div>
       </div>
       <div className='section4'>

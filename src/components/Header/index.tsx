@@ -337,7 +337,7 @@ export default function Header() {
           <StyledNavLink 
             // onClick={() => {setNavVisibility(false)}} 
             to={'/dashboard'}
-            isActive={(match: boolean, { pathname }: any) =>
+            isActive={(match: any, { pathname }: any) =>
               Boolean(match) ||
               pathname.startsWith('/dashboard')
             }
@@ -347,12 +347,12 @@ export default function Header() {
           <StyledNavLink
             to={'/game'}
             // onClick={() => {setNavVisibility(false)}}
-            isActive={(match: boolean, { pathname }: any) =>
+            isActive={(match: any, { pathname }: any) =>
               Boolean(match) ||
               pathname.startsWith('/game')
             }
           >
-            Game
+            Game Console
           </StyledNavLink>
           <StyledNavLink
             // onClick={() => {setNavVisibility(false)}}

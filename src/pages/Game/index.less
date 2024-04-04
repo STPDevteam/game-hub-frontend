@@ -3,15 +3,12 @@
     height: 100%;
     margin: 0 auto;
     position: relative;
-    background: url('../../assets/images/bg.jpg') no-repeat;
+    background: url('../../assets/images/bg.png') no-repeat;
     background-size: 100%;
     &>div{
         max-width: 1240px;
         margin: 0 auto;
-        padding: 0 4rem;
-        &:not(:first-of-type){
-            margin-top: 40px;
-        }
+        padding: 3rem 4rem;
     }
     .section1{
         min-height: 100vh;
@@ -118,6 +115,14 @@
         }
     }
     .section3{
+        background: linear-gradient(90deg, #0C0F4B 0%, #000114 100%);
+        width: 100%;
+        max-width: 100%;
+        &>div{
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 4rem; 
+        }
         h2{
             color: #98E6FF;
             font-size: 30px;
