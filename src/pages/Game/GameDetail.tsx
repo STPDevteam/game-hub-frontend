@@ -19,6 +19,8 @@ import Game5 from 'assets/images/game_5.png'
 import Game6 from 'assets/images/game_6.png'
 import Game7 from 'assets/images/game_7.png'
 import Game8 from 'assets/images/game_8.png'
+import BaseChain from 'assets/svg/base.svg'
+import MainnetChain from 'assets/svg/eth.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './GameDetail.less'
 
@@ -85,59 +87,58 @@ export default function GameDetail() {
             <p>
             Enter the realm of "Eternal Legacy," where the echoes of a fallen empire set the stage for a groundbreaking adventure. Dive into a card game that merges strategic mastery with the revolutionary power of AI and blockchain technology.
             </p>
+            <div className='info'>
+                <div>
+                    Support Chains: <img src={BaseChain} alt="Base"/> <img src={MainnetChain} alt="Mainnet"/>
+                </div>
+                <div>
+                    Players: <span>2,300</span>
+                </div>
+            
+            </div>
             <button>Play Now</button>
           </div>
         </div>
       </div>
       <div className='section2'>
-        <h2>Popular Games</h2>
-        <div className='popular-game'>
-          <div><img src={Forest1} alt="Forest" /></div>
-          <div>
-            <div>
-              <div><img src={Forest2} alt="Forest" /></div>
-              <div>
-                <h3>ANCIENT FOREST</h3>
-                <p>The forest is full of temptations and traps, use your wits to travel through this ancient forest, there will be unexpected rewards.</p>
-              </div>
-            </div>
-            <div>
-              <div><img src={Forest3} alt="Forest" /></div>
-              <div><img src={Forest4} alt="Forest" /></div>
-              <div><img src={Forest5} alt="Forest" /></div>
-            </div>
-          </div>
+        <div>
+            <h2>Points rule</h2>
+            <ol>
+                <li>Ancient Forest Points Redeemed for XCOIN</li>
+                <li>1 XCOIN = 100 Points</li>
+            </ol>
         </div>
       </div>
       <div className='section3'>
         <div>
-          <h2>Upcoming Games</h2>
-          <div>
-            <Slider {...settings}>
-              <div className='card'>
-                <img src={UpcomingGame1} alt="" />
+            <div className='card'>
+                <img src={Game1} alt="" />
                 <div className='name'>
-                  <h3>HERO2</h3>
+                <h3>Eternal Legacy</h3>
                 </div>
-              </div>
-              <div className='card'>
-                <img src={UpcomingGame2} alt="" />
+            </div>
+            <div className='card'>
+                <img src={Game2} alt="" />
                 <div className='name'>
-                  <h3>Adventure Forge</h3>
+                <h3>Adventure Forge</h3>
                 </div>
-              </div>
-              <div className='card'>
-                <img src={UpcomingGame3} alt="" />
+            </div>
+            <div className='card'>
+                <img src={Game1} alt="" />
                 <div className='name'>
-                  <h3>DICE</h3>
+                <h3>Eternal Legacy</h3>
                 </div>
-              </div>
-            </Slider>
-          </div>
+            </div>
+            <div className='card'>
+                <img src={Game2} alt="" />
+                <div className='name'>
+                <h3>Adventure Forge</h3>
+                </div>
+            </div>
         </div>
       </div>
       <div className='section4'>
-        <h2>All Games</h2>
+        <h2>Featured Games</h2>
         <div>
           <div className='card'>
             <img src={Game1} alt="" />

@@ -33,7 +33,6 @@
         }
     }
     .section1{
-        min-height: 100vh;
         width: 100%;
         h1{
             font-size: 20px;
@@ -43,18 +42,20 @@
         }
         .intro{
             display: grid;
-            grid-template-columns: 70% 30%;
+            grid-template-columns: 50% 50%;
             justify-content: center;
             align-items: center;
+            border-radius: 20px;
+            overflow: hidden;
             &>div{
-                img{
-                    width: 100%;
+                &:first-of-type{
+                    img{
+                        width: 100%;
+                    }
                 }
                 &:last-of-type{
-                    padding: 50px;
+                    padding: 40px;
                     background: #17193B;
-                    margin-left: -10%;
-                    border-radius: 20px;
                 }
             }
             h2{
@@ -74,102 +75,52 @@
                 border-radius: 30px;
             }
         }
+        .info{
+            display: flex;
+            justify-content: space-between;
+            color: #949CB9;
+            margin-bottom: 20px;
+            span{
+                color: #fff;
+            }
+            img{
+                width: 25px;
+                height: 25px;
+            }
+        }
     }
     .section2{
+        &>div{
+            background: linear-gradient(270deg, #030520 61.06%, #00034D 100%);
+            border-left: 4px solid #0C2A96;
+            padding: 25px 37px;
+        }
         h2{
             color: #98E6FF;
             font-size: 30px;
             font-weight: 600;
         }
-        .popular-game{
-            background: url('../../assets/images/forest-bg.png') no-repeat;
-            background-size: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            gap: 30px;
-            h3{
-                font-size: 24px;
-                font-weight: 700;
-                color: #fff;
-            }
-            p{
+        ol{
+            padding-left: 20px;
+            li{
                 font-size: 16px;
                 font-weight: 400;
                 color: #fff;
             }
-            &>div{
-                img{
-                    width: 100%;
-                }
-                &:last-of-type{
-                    padding: 30px 30px 30px 0;
-                }
-                &>div{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-                    &:first-of-type{
-                        display: grid;
-                        grid-template-columns: 128px 1fr;
-                        padding-bottom: 20px;
-                        border-bottom: 1px dotted #5E71B7 ;
-                        &>div{
-                            &:first-of-type{
-                                width: 128px;
-                                img{
-                                    width: 100%;
-                                }
-                            } 
-                        }
-                    }
-                    &:last-of-type{
-                        padding-top: 20px;
-                    }
-                }
-            }
         }
     }
     .section3{
-        background: linear-gradient(90deg, #0C0F4B 0%, #000114 100%);
-        width: 100%;
-        max-width: 100%;
         &>div{
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 0 4rem; 
-        }
-        h2{
-            color: #98E6FF;
-            font-size: 30px;
-            font-weight: 600;
-        }
-        .slick-list{
-            margin: 0 -15px;
-            .slick-slide{
-                padding: 0 15px;
-                .card{
-                    border-radius: 20px;
-                    overflow: hidden;
-                }
-                img{
-                    width: 100%;
-                }
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            &>div{
+                border-radius: 10px;
             }
-        }
-        .slick-prev:before, .slick-next:before{
-            display: none;
-        }
-        .slick-next{
-            background: #171D6F80;
-            border-radius: 20px;
-            width: 160px;
-            height: 140px;
-            right: -140px;
-        }
+            img{
+                width: 100%;
+            }
+        } 
     }
     .section4{
         h2{
