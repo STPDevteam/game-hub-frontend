@@ -20,10 +20,10 @@ import Game6 from 'assets/images/game_6.png'
 import Game7 from 'assets/images/game_7.png'
 import Game8 from 'assets/images/game_8.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
-import './index.less'
+import './GameDetail.less'
 
 
-export default function Game() {
+export default function GameDetail() {
   const { account, chainId, library } = useActiveWeb3React()
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
@@ -73,9 +73,9 @@ export default function Game() {
   };
 
   return (
-    <div className="container-game">
+    <div className="container-gamedetail">
       <div className='section1'>
-        <h1>Play on Clique</h1>
+        <h1>Games / Eternal Legacy</h1>
         <div className='intro'>
           <div>
             <img src={EternaLegacyImg} alt="EternaLegacy" />

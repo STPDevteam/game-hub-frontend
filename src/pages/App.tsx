@@ -12,6 +12,7 @@ import Game from './Game'
 // import Transactions from './Predict/Transactions'
 import './App.less'
 import Dashboard from './Dashboard'
+import GameDetail from './Game/GameDetail'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -48,6 +49,7 @@ export default function App() {
                   <Switch>
                     <Route exact strict path="/" component={Game} />
                     <Route exact strict path="/game" component={Game} />
+                    <Route exact strict path="/game/:id" component={GameDetail} />
                     <Route exact strict path="/dashboard" component={Dashboard} />
                   </Switch>
                 </Web3ReactManager>

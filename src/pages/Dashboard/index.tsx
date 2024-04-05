@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
-import { Tabs } from 'antd';
+import { Tabs, Tag } from 'antd';
 import { DoubleRightOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import Awns from 'assets/images/awns.png'
@@ -123,14 +123,26 @@ export default function Dashboard() {
                     <div className='extra-btn'>{'Register new AWNS  >>'}</div>
                     </h2>
                     <Slider {...settings}>
-                        <div>
-                        <img src={Awns} alt="" />
+                        <div className='card2'>
+                          <img src={Awns} alt="" />
+                          <div className='name'>
+                            <div>tatanick.aw</div>
+                            <div><Tag color="#A7F46A">Level 1</Tag></div>
+                          </div>
                         </div>
-                        <div>
-                        <img src={Awns} alt="" />
+                        <div className='card2'>
+                          <img src={Awns} alt="" />
+                          <div className='name'>
+                            <div>tatanick.aw</div>
+                            <div><Tag color="#A7F46A">Level 1</Tag></div>
+                          </div>
                         </div>
-                        <div>
-                        <img src={Awns} alt="" />
+                        <div className='card2'>
+                          <img src={Awns} alt="" />
+                          <div className='name'>
+                            <div>tatanick.aw</div>
+                            <div><Tag color="#A7F46A">Level 1</Tag></div>
+                          </div>
                         </div>
                     </Slider>
                 </div>
@@ -139,17 +151,29 @@ export default function Dashboard() {
                       <div className='extra-btn'>{'Points Record  >>'}</div>
                     </h2>
                     <Slider {...settings2}>
-                        <div>
+                        <div className='card'>
                             <img src={Console1} alt="" />
+                            <div className='name'>
+                              <h3>Eternal Legacy</h3>
+                            </div>
                         </div>
-                        <div>
+                        <div className='card'>
                             <img src={Console2} alt="" />
+                            <div className='name'>
+                              <h3>Adventure Forge</h3>
+                            </div>
                         </div>
-                        <div>
+                        <div className='card'>
                             <img src={Console3} alt="" />
+                            <div className='name'>
+                              <h3>DICE</h3>
+                            </div>
                         </div>
-                        <div>
+                        <div className='card'>
                             <img src={Console4} alt="" />
+                            <div className='name'>
+                              <h3>Ancient Forest</h3>
+                            </div>
                         </div>
                     </Slider>
                 </div>
@@ -158,14 +182,54 @@ export default function Dashboard() {
                   <Tabs defaultActiveKey="1" moreIcon={<DoubleRightOutlined style={{color: '#fff'}}/>}>
                     <Tabs.TabPane tab="All" key="1">
                       <div className='games'>
-                        <div><img src={Game1} alt="" /></div>
-                        <div><img src={Game2} alt="" /></div>
-                        <div><img src={Game3} alt="" /></div>
-                        <div><img src={Game4} alt="" /></div>
-                        <div><img src={Game5} alt="" /></div>
-                        <div><img src={Game6} alt="" /></div>
-                        <div><img src={Game7} alt="" /></div>
-                        <div><img src={Game8} alt="" /></div>
+                        <div className='card2'>
+                          <img src={Game1} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#1</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game2} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#2</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game3} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#3</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game4} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#4</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game5} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#5</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game6} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#6</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game7} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#7</div>
+                          </div>
+                        </div>
+                        <div className='card2'>
+                          <img src={Game8} alt="" />
+                          <div className='name'>
+                            <div>NFT Name#8</div>
+                          </div>
+                        </div>
                       </div>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Ancient Forest (3)" key="2">
@@ -234,10 +298,30 @@ export default function Dashboard() {
                     <div className='extra-btn'>{'More  >>'}</div>
                   </h2>
                   <div className='nfts'>
-                    <div><img src={NFT1} alt="NFT" /></div>
-                    <div><img src={NFT2} alt="NFT" /></div>
-                    <div><img src={NFT3} alt="NFT" /></div>
-                    <div><img src={NFT4} alt="NFT" /></div>
+                    <div className='card'>
+                      <img src={NFT1} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#1</div>
+                      </div>
+                    </div>
+                    <div className='card'>
+                      <img src={NFT2} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#2</div>
+                      </div>
+                    </div>
+                    <div className='card'>
+                      <img src={NFT3} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#3</div>
+                      </div>
+                    </div>
+                    <div className='card'>
+                      <img src={NFT4} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#4</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>
