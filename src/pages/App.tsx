@@ -14,6 +14,7 @@ import './App.less'
 import Dashboard from './Dashboard'
 import GameDetail from './Game/GameDetail'
 import Reward from './Reward'
+import Guide from './Guide'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ export default function App() {
                     <Route exact strict path="/game/:id" component={GameDetail} />
                     <Route exact strict path="/dashboard" component={Dashboard} />
                     <Route exact strict path="/reward" component={Reward} />
+                    <Route exact strict path="/guide" component={Guide} />
                   </Switch>
                 </Web3ReactManager>
                 <Marginer />
