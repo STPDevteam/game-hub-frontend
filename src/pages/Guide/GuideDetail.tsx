@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { RouteComponentProps } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
-import { useGameDetail } from './hooks'
+import { useGuideDetail } from './hooks'
 import EternaLegacyImg from 'assets/images/eterna_legacy.png'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
@@ -15,7 +15,7 @@ import Game8 from 'assets/images/game_8.png'
 import BaseChain from 'assets/svg/base.svg'
 import MainnetChain from 'assets/svg/eth.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
-import './GameDetail.less'
+import './GuideDetail.less'
 
 
 export default function GameDetail(props: RouteComponentProps<{ name: string }>) {
@@ -24,13 +24,13 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
       params: { name }
     }
   } = props
-  const data = useGameDetail(name);
+  const data = useGuideDetail(name);
   const history = useHistory();
 
   return (
-    <div className="container-gamedetail">
+    <div className="container-guidedetail">
       <div className='section1'>
-        <h1><span>Games</span> / {data.name}</h1>
+        <h1><span>Guide</span> / {data.name}</h1>
         <div className='intro'>
           <div>
             <img src={EternaLegacyImg} alt="EternaLegacy" />

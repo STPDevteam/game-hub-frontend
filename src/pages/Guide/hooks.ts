@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react"
-import gameData from './GameList.json';
+import guideData from './GuideList.json';
 
-export function useGameDetail(id: string): any{
+export function useGuideDetail(id: string): any{
   const [data, setData] = useState<any>({});
   const fetchData = useCallback(async () => {
-    const loadData: any = JSON.parse(JSON.stringify(gameData));
+    const loadData: any = JSON.parse(JSON.stringify(guideData));
     console.log('loadData', loadData)
     for(let i =0; i < loadData.length; i++){
       if(loadData[i].id = id){

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
-import { useActiveWeb3React } from '../../hooks'
+import { useHistory } from 'react-router-dom'
 import EternaLegacyImg from 'assets/images/eterna_legacy.png'
 import Forest1 from 'assets/images/forest1.png'
 import Forest2 from 'assets/images/forest2.png'
@@ -24,7 +24,7 @@ import './index.less'
 
 
 export default function Game() {
-  const { account, chainId, library } = useActiveWeb3React()
+  const history = useHistory();
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -85,7 +85,7 @@ export default function Game() {
             <p>
             Enter the realm of "Eternal Legacy," where the echoes of a fallen empire set the stage for a groundbreaking adventure. Dive into a card game that merges strategic mastery with the revolutionary power of AI and blockchain technology.
             </p>
-            <button>Play Now</button>
+            <button onClick={() => {window.open('https://eternallegacy.xyz')}}>Play Now</button>
           </div>
         </div>
       </div>
@@ -139,24 +139,30 @@ export default function Game() {
       <div className='section4'>
         <h2>All Games</h2>
         <div>
-          <div className='card'>
+          <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
             <img src={Game1} alt="" />
             <div className='name'>
               <h3>Eternal Legacy</h3>
             </div>
           </div>
-          <div className='card'>
+          <div className='card' onClick={() => {history.push('/game/dynamicavatar')}}>
             <img src={Game2} alt="" />
             <div className='name'>
-              <h3>Adventure Forge</h3>
+              <h3>Dynamic avatar(Beta)</h3>
             </div>
           </div>
-          <div><img src={Game3} alt="" /></div>
-          <div><img src={Game4} alt="" /></div>
-          <div><img src={Game5} alt="" /></div>
-          <div><img src={Game6} alt="" /></div>
-          <div><img src={Game7} alt="" /></div>
-          <div><img src={Game8} alt="" /></div>
+          <div className='card' onClick={() => {history.push('/game/dice')}}>
+            <img src={Game3} alt="" />
+            <div className='name'>
+              <h3>DICE</h3>
+            </div>
+          </div>
+          <div className='card' onClick={() => {history.push('/game/ancientforest')}}>
+            <img src={Game4} alt="" />
+            <div className='name'>
+              <h3>Ancient Forest</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>

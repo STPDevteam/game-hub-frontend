@@ -139,12 +139,11 @@ const TestnetWrapper = styled.div`
 
 
 const NetworkBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  width: 100%;
   img{
     width: 30px;
+    height: 100%;
   }
 `
 
@@ -234,6 +233,7 @@ const NETWORKS: any = [
     label: (
       <NetworkBox>
         <img src={getChain(ChainId.MAINNET)?.icon} />
+        &nbsp;{getChain(ChainId.MAINNET)?.name}
       </NetworkBox>
     )
   },
@@ -242,6 +242,7 @@ const NETWORKS: any = [
     label: (
       <NetworkBox>
         <img src={getChain(ChainId.BASE)?.icon} />
+        &nbsp;{getChain(ChainId.BASE)?.name}
       </NetworkBox>
     )
   }
@@ -321,7 +322,7 @@ export default function Header() {
           <MenuOutlined />
         </button>
         <HeaderLogoDiv>
-          <Title href="https://app.rai.finance/#/">
+          <Title href="/">
             <UniIcon>
               <img className="screen" style={{ width: '158px', height: '50px' }} src={Logo} alt="logo" />
               <img className="mobile" style={{ width: '158px', height: '50px' }} src={Logo} alt="logo" />

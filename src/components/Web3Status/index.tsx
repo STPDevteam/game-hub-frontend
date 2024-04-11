@@ -2,6 +2,7 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { darken, lighten } from 'polished'
 import React, { useMemo, useContext } from 'react'
+import { useAWNSName } from 'hooks/useAWNSName'
 import { Activity } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import styled, { css, ThemeContext } from 'styled-components'
@@ -170,6 +171,7 @@ function Web3StatusInner() {
   const { account, connector, error } = useWeb3React()
 
   const { ENSName } = useENSName(account ?? undefined)
+  const AWNSName = useAWNSName(account ?? undefined)
 
   const allTransactions = useAllTransactions()
 
@@ -194,7 +196,7 @@ function Web3StatusInner() {
           </RowBetween>
         ) : (
           <>
-            <Text>{ENSName || shortenAddress(account)}</Text>
+            <Text>{ENSName || AWNSName || shortenAddress(account)}</Text>
           </>
         )}
         {/* {!hasPendingTransactions && connector && <StatusIcon connector={connector} />} */}
@@ -221,7 +223,6 @@ export default function Web3Status() {
   const contextNetwork = useWeb3React(NetworkContextName)
 
   const { ENSName } = useENSName(account ?? undefined)
-
   const allTransactions = useAllTransactions()
 
   const sortedRecentTransactions = useMemo(() => {

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
 import { Tabs, Tag } from 'antd';
+import { useHistory } from 'react-router-dom'
 import { DoubleRightOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import Awns from 'assets/images/awns.png'
@@ -31,7 +32,7 @@ import './index.less'
 
 
 export default function Dashboard() {
-  const { account, chainId, library } = useActiveWeb3React()
+  const history = useHistory();
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -120,7 +121,7 @@ export default function Dashboard() {
             <div className='left-content'>
                 <div className='section1'>
                     <h2>AWNS
-                    <div className='extra-btn'>{'Register new AWNS  >>'}</div>
+                    <div className='extra-btn' onClick={() => {window.open('https://awns.stp.network/')}}>{'Register new AWNS  >>'}</div>
                     </h2>
                     <Slider {...settings}>
                         <div className='card2'>
@@ -148,33 +149,33 @@ export default function Dashboard() {
                 </div>
                 <div className='section1'>
                     <h2>Game Console
-                      <div className='extra-btn'>{'Points Record  >>'}</div>
+                      {/* <div className='extra-btn'>{'Points Record  >>'}</div> */}
                     </h2>
                     <Slider {...settings2}>
-                        <div className='card'>
-                            <img src={Console1} alt="" />
-                            <div className='name'>
-                              <h3>Eternal Legacy</h3>
-                            </div>
+                      <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
+                        <img src={Game1} alt="" />
+                        <div className='name'>
+                          <h3>Eternal Legacy</h3>
                         </div>
-                        <div className='card'>
-                            <img src={Console2} alt="" />
-                            <div className='name'>
-                              <h3>Adventure Forge</h3>
-                            </div>
+                      </div>
+                      <div className='card' onClick={() => {history.push('/game/dynamicavatar')}}>
+                        <img src={Game2} alt="" />
+                        <div className='name'>
+                          <h3>Dynamic avatar(Beta)</h3>
                         </div>
-                        <div className='card'>
-                            <img src={Console3} alt="" />
-                            <div className='name'>
-                              <h3>DICE</h3>
-                            </div>
+                      </div>
+                      <div className='card' onClick={() => {history.push('/game/dice')}}>
+                        <img src={Game3} alt="" />
+                        <div className='name'>
+                          <h3>DICE</h3>
                         </div>
-                        <div className='card'>
-                            <img src={Console4} alt="" />
-                            <div className='name'>
-                              <h3>Ancient Forest</h3>
-                            </div>
+                      </div>
+                      <div className='card' onClick={() => {history.push('/game/ancientforest')}}>
+                        <img src={Game4} alt="" />
+                        <div className='name'>
+                          <h3>Ancient Forest</h3>
                         </div>
+                      </div>
                     </Slider>
                 </div>
                 <div className='section1'>
@@ -249,14 +250,14 @@ export default function Dashboard() {
             </div>
             <div className='right-content'>
                 <div>
-                    <h2>FAQ
+                    <h2>Learn More
                       <div className='extra-btn'>{'More  >>'}</div>
                     </h2>
                     <ul>
-                        <li><a href=''>Ways to level up quickly<LinkIcon/></a></li>
-                        <li><a href=''>How to sell game assets?<LinkIcon/></a></li>
-                        <li><a href=''>What are the points for?<LinkIcon/></a></li>
-                        <li><a href=''>How to redeem Ancient Forest points?<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service/how-to-guide' target='_blank'>How to Create AWNS<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service/how-to-guide' target='_blank'>How to manipulate assets in the ERC-6551 account?<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/stp/scaling-onchain-gaming' target='_blank'>Scaling Onchain Gaming?<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/stp/pioneer-ai-gaming-on-base' target='_blank'>Pioneer AI Gaming on Base?<LinkIcon/></a></li>
                     </ul>
                 </div>
                 <div>
