@@ -138,6 +138,8 @@
     "@types/react-transition-group": "^4.4.2",
     "@uniswap/default-token-list": "^2.0.0",
     "@web3-react/walletlink-connector": "6.2.13",
+    "ahooks": "^3.7.11",
+    "alchemy-sdk": "^3.2.1",
     "antd": "4.20.0",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
@@ -164,6 +166,7 @@
     "segmented-control": "^0.2.0",
     "slick-carousel": "^1.8.1",
     "toformat": "^2.0.0",
+    "wagmi": "0.12.13",
     "web3": "^1.5.2"
   }
 }

@@ -4,7 +4,6 @@ export enum ChainId {
 
   GÖRLI = 5,
   KOVAN = 42,
-
   RINKEBY = 4,
   POLYGON = 137,
   BASE_GOERLI = 84531,

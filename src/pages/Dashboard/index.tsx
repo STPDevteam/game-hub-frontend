@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
 import { Tabs, Tag } from 'antd';
@@ -6,10 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { DoubleRightOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import Awns from 'assets/images/awns.png'
-import Console1 from 'assets/images/console1.png'
-import Console2 from 'assets/images/console2.png'
-import Console3 from 'assets/images/console3.png'
-import Console4 from 'assets/images/console4.png'
+import { useGetUserAllNFT } from 'hooks/useGetUserNFT'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
 import Game3 from 'assets/images/game_3.png'
@@ -33,6 +30,14 @@ import './index.less'
 
 export default function Dashboard() {
   const history = useHistory();
+  const [refresh, setRefresh] = useState<number>(-1)
+  const { account, chainId } = useActiveWeb3React();
+  const { loading: NftLoading, data: nftData } = useGetUserAllNFT(
+    '0x5aEFAA34EaDaC483ea542077D30505eF2472cfe3' || '',
+    chainId,
+    refresh,
+  )
+  console.log('nftData:', nftData)
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -233,7 +238,7 @@ export default function Dashboard() {
                         </div>
                       </div>
                     </Tabs.TabPane>
-                    <Tabs.TabPane tab="Ancient Forest (3)" key="2">
+                    {/* <Tabs.TabPane tab="Ancient Forest (3)" key="2">
                       Content of Tab Pane 2
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Dynamic Avatar (5)" key="3">
@@ -244,7 +249,7 @@ export default function Dashboard() {
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Adventure Forge (5)" key="5">
                       Content of Tab Pane 3
-                    </Tabs.TabPane>
+                    </Tabs.TabPane> */}
                   </Tabs>
                 </div>
             </div>

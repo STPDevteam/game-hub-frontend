@@ -9,6 +9,9 @@
         max-width: 1240px;
         margin: 0 auto;
         padding: 3rem 4rem;
+        @media (max-width: 768px) {
+            padding: 1rem;
+        }
     }
     .card{
         position: relative;
@@ -39,6 +42,9 @@
             font-weight: 600;
             padding-top: 80px;
             color: #98E6FF;  
+            @media (max-width: 768px) {
+                padding-top: 20px;
+            }
             span{
                 color: #949CB9;
                 font-size: 16px;
@@ -51,6 +57,9 @@
             align-items: center;
             border-radius: 20px;
             overflow: hidden;
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+            }
             &>div{
                 &:first-of-type{
                     img{
@@ -60,6 +69,9 @@
                 &:last-of-type{
                     padding: 40px;
                     background: #17193B;
+                    @media (max-width: 768px) {
+                        padding: 20px;
+                    }
                 }
             }
             h2{
@@ -98,6 +110,9 @@
             background: linear-gradient(270deg, #030520 61.06%, #00034D 100%);
             border-left: 4px solid #0C2A96;
             padding: 25px 37px;
+            @media (max-width: 768px) {
+                padding: 20px;
+            }
         }
         h2{
             color: #98E6FF;
@@ -118,6 +133,9 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
             &>div{
                 border-radius: 10px;
             }
@@ -136,6 +154,9 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
             &>div{
                 border-radius: 10px;
             }

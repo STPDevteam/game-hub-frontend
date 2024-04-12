@@ -6,7 +6,7 @@ import { NavLink, useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router'
 import { MenuOutlined, SwapOutlined } from '@ant-design/icons';
 import styled from 'styled-components'
-import { Select, Space } from 'antd';
+import { Select, Tooltip } from 'antd';
 import { getChain } from 'constants/index'
 import Logo from '../../assets/images/logo.png'
 import { useActiveWeb3React } from '../../hooks'
@@ -83,6 +83,19 @@ const HeaderNavBox = styled.div`
       display: none;
     }
   `};
+  a{
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: ${({ theme }) => theme.text3};
+    font-size: 1rem;
+    width: fit-content;
+    font-weight: 500;
+    :hover,
+    :focus {
+      color: #fff;
+    }
+  }
 `
 const Title = styled.a`
   display: flex;
@@ -325,7 +338,7 @@ export default function Header() {
           <Title href="/">
             <UniIcon>
               <img className="screen" style={{ width: '158px', height: '50px' }} src={Logo} alt="logo" />
-              <img className="mobile" style={{ width: '158px', height: '50px' }} src={Logo} alt="logo" />
+              <img className="mobile" style={{ width: '94px', height: '30px' }} src={Logo} alt="logo" />
             </UniIcon>
             {/* <TitleText> */}
               {/* Soswap */}
@@ -336,7 +349,7 @@ export default function Header() {
 
         <HeaderNavBox className={`${isNavVisible ? 'show': 'hide'}`}>
           <StyledNavLink 
-            // onClick={() => {setNavVisibility(false)}} 
+            onClick={() => {setNavVisibility(false)}} 
             to={'/dashboard'}
             isActive={(match: any, { pathname }: any) =>
               Boolean(match) ||
@@ -347,7 +360,7 @@ export default function Header() {
           </StyledNavLink>
           <StyledNavLink
             to={'/game'}
-            // onClick={() => {setNavVisibility(false)}}
+            onClick={() => {setNavVisibility(false)}}
             isActive={(match: any, { pathname }: any) =>
               Boolean(match) ||
               pathname.startsWith('/game')
@@ -355,24 +368,28 @@ export default function Header() {
           >
             Game Console
           </StyledNavLink>
+          <Tooltip title="Coming Soon" color={'#0049C6'}>
+            <a
+              onClick={() => {setNavVisibility(false)}}
+              href={'javascript:void(0)'}
+            >
+              Marketplace
+            </a>
+          </Tooltip>
           <StyledNavLink
-            // onClick={() => {setNavVisibility(false)}}
-            to={'/marketplace'}
-          >
-            Marketplace
-          </StyledNavLink>
-          <StyledNavLink
-            // onClick={() => {setNavVisibility(false)}}
+            onClick={() => {setNavVisibility(false)}}
             to={'/guide'}
           >
             Guide
           </StyledNavLink>
-          <StyledNavLink
-            // onClick={() => {setNavVisibility(false)}}
-            to={'/reward'}
-          >
-            Reward
-          </StyledNavLink>
+          <Tooltip title="Coming Soon" color={'#0049C6'}>
+            <a
+              onClick={() => {setNavVisibility(false)}}
+              href={'javascript:void(0)'}
+            >
+              Reward
+            </a>
+          </Tooltip>
         </HeaderNavBox>
         <HeaderControls>
           <HeaderElement>

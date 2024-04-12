@@ -6,7 +6,7 @@ import { useActiveWeb3React } from 'hooks'
 //@ts-ignore
 const hexEncodeName = (name: string) => `0x${packet.name.encode(name).toString('hex')}`
 
-export const useAWNSName = (addr: string) => {
+export const useAWNSName = (addr: string | undefined) => {
     const { chainId } = useActiveWeb3React()
   const contract = useUniversalResolverContract(UniversalResolver_contract_address[chainId || '1'])
   const [name, setName] = useState<string>()

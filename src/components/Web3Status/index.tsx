@@ -189,7 +189,7 @@ function Web3StatusInner() {
   if (account) {
     return (
       <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
-        {!hasPendingTransactions && connector && <WalletIconBox src={WalletIcon} />}
+        {/* {!hasPendingTransactions && connector && <WalletIconBox src={WalletIcon} />} */}
         {hasPendingTransactions ? (
           <RowBetween>
             <Text style={{ color: theme.text1 }}>{pending?.length} Pending</Text> <Loader stroke={theme.text1} />

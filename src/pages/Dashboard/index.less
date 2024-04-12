@@ -53,6 +53,10 @@
         display: grid;
         grid-template-columns: 65% 35%;
         gap: 20px;
+        @media (max-width: 768px) {
+            grid-template-columns: 100%;
+            padding: 20px 1rem 0;
+        }
         &:not(:first-of-type){
             margin-top: 40px;
         }
@@ -124,6 +128,9 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
             img{
                 width: 100%;
             }

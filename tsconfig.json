@@ -32,6 +32,6 @@
     "declaration.d.ts",
     "constants.d.ts"
   ],
-  "exclude": ["node_modules", "./build", "cypress", "./src/charting_library/**/*", "public"],
+  "exclude": ["node_modules", "./build", "cypress", "public"],
   "typeRoots": ["node_modules", "@types"]
 }
