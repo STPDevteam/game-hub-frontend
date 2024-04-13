@@ -1,11 +1,13 @@
 [
     {
-        "id": "ancientforeast",
+        "id": "ancientforest",
         "name":"Ancient Foreast",
         "description": "The forest is full of temptations and traps, use your wits to travel through this ancient forest, and there will be unexpected rewards.",
         "website":"https://ancientforest.xyz/",
         "supportedChain": [1, 8453],
-        "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/ancient-forest/game-tutorial"
+        "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/ancient-forest/game-tutorial",
+        "bg":"./images/AncientForest/bg.png",
+        "images":["./images/AncientForest/img1.jpg", "./images/AncientForest/img2.jpg"]
     },
     {
         "id": "dynamicavatar",
@@ -13,7 +15,9 @@
         "description": "Each AWNS gives you access to special pieces and the ability to retool your NFT!",
         "website":"https://awns.stp.network/my/names",
         "supportedChain": [1, 8453],
-        "guide":"https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service"
+        "guide":"https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service",
+        "bg":"./images/Dynamic/bg.png",
+        "images":["./images/Dynamic/img1.jpg", "./images/Dynamic/img2.jpg", "./images/Dynamic/img3.jpg", "./images/Dynamic/img4.jpg"]
     },
     {
         "id": "dice",
@@ -21,7 +25,9 @@
         "description": "Simple and fun dice rolling game, complete 6 moves to get a bonus, good luck!",
         "website":"https://lootdice.xyz/",
         "supportedChain": [5151706],
-        "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/dice"
+        "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/dice",
+        "bg":"./images/Dice/bg.png",
+        "images":["./images/Dice/img1.png", "./images/Dice/img2.png", "./images/Dynamic/img2.png"]
     },
     {
         "id": "eternallegacy",
@@ -29,6 +35,9 @@
         "description": "Enter the realm of \"Eternal Legacy,\" where the echoes of a fallen empire set the stage for a groundbreaking adventure. Challenge the guardians of mystical forces and embark on a quest where your tactical prowess, AI-enhanced gameplay, and NFT transformation and derivative ownership forge your path to glory.",
         "website":"https://eternallegacy.xyz",
         "supportedChain": [],
-        "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/eternal-legacy"
+        "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/eternal-legacy",
+        "bg":"./images/EternalLegacy/bg.png",
+        "avatar": "./images/EternalLegacy/avatar.png",
+        "images":["./images/EternalLegacy/img1.png", "./images/EternalLegacy/img2.png", "./images/EternalLegacy/img3.png","./images/EternalLegacy/img4.png"]
     }
 ]

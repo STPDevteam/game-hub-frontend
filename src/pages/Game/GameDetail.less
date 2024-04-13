@@ -3,8 +3,8 @@
     height: 100%;
     margin: 0 auto;
     position: relative;
-    background: url('../../assets/images/game-detail-bg.png') no-repeat;
-    background-size: 100%;
+    // background: url('../../assets/images/game-detail-bg.png') no-repeat;
+    background-size: 100%, 100%;
     &>div{
         max-width: 1240px;
         margin: 0 auto;
@@ -13,9 +13,19 @@
             padding: 1rem;
         }
     }
+    .more-img{
+        width: 100%;
+        img{
+            border-radius: 10px;
+        }
+    }
     .card{
         position: relative;
         overflow: hidden;
+        cursor: pointer;
+        img{
+            object-fit: cover;
+        }
         .name{
             position: absolute;
             bottom: 0;
@@ -61,8 +71,14 @@
                 grid-template-columns: 1fr;
             }
             &>div{
+                height: 380px;
+                @media (max-width: 768px) {
+                    height: auto;
+                }
                 &:first-of-type{
+                    width: 100%;
                     img{
+                        object-fit: cover;
                         width: 100%;
                     }
                 }

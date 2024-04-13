@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import gameData from './GameList.json';
+import gameData from '../GameList.json';
 
 export function useGameDetail(id: string): any{
   const [data, setData] = useState<any>({});
@@ -7,14 +7,17 @@ export function useGameDetail(id: string): any{
     const loadData: any = JSON.parse(JSON.stringify(gameData));
     console.log('loadData', loadData)
     for(let i =0; i < loadData.length; i++){
-      if(loadData[i].id = id){
+      if(loadData[i].id === id){
         setData(loadData[i])
+        return
       }
     }
-  }, [])
+  }, [id])
 
   useEffect(() => {
+    if(id){
       fetchData()
-  }, [])
+    }
+  }, [id])
   return data
 }

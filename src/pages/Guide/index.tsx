@@ -7,11 +7,6 @@ import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
-import Game5 from 'assets/images/game_5.png'
-import Game6 from 'assets/images/game_6.png'
-import Game7 from 'assets/images/game_7.png'
-import Game8 from 'assets/images/game_8.png'
-import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './index.less'
 
 const { Search } = Input;
@@ -30,7 +25,7 @@ export default function Guide() {
       </div>
       <div className='section2'>
         <div className='games'>
-          <div className='card' onClick={() => {window.open('https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/eternal-legacy')}}>
+          <div className='card' onClick={() => {history.push('/guide/eternallegacy')}}>
             <img src={Game1} alt="" />
             <div className='name'>
               <h3>Eternal Legacy</h3>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import guideData from './GuideList.json';
+import guideData from '../GameList.json';
 
 export function useGuideDetail(id: string): any{
   const [data, setData] = useState<any>({});

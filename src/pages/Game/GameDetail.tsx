@@ -3,18 +3,12 @@ import styled from 'styled-components'
 import { RouteComponentProps } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useGameDetail } from './hooks'
-import EternaLegacyImg from 'assets/images/eterna_legacy.png'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
-import Game5 from 'assets/images/game_5.png'
-import Game6 from 'assets/images/game_6.png'
-import Game7 from 'assets/images/game_7.png'
-import Game8 from 'assets/images/game_8.png'
 import BaseChain from 'assets/svg/base.svg'
 import MainnetChain from 'assets/svg/eth.png'
-import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './GameDetail.less'
 
 
@@ -28,12 +22,12 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
   const history = useHistory();
 
   return (
-    <div className="container-gamedetail">
+    <div className="container-gamedetail" style={{background: `linear-gradient(180deg, rgba(0, 2, 40, 0) 0%, #000228 100%), top / contain url(${data?.bg}) no-repeat`}}>
       <div className='section1'>
         <h1><span>Games</span> / {data.name}</h1>
         <div className='intro'>
           <div>
-            <img src={EternaLegacyImg} alt="EternaLegacy" />
+            <img src={data?.images && data?.images[0]} alt="" />
           </div>
           <div>
             <h2>{data.name}</h2>
@@ -46,14 +40,13 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
                 </div>
                 <div>
                     Players: <span>2,300</span>
-                </div>
-            
+                </div>     
             </div>
             <button>Play Now</button>
           </div>
         </div>
       </div>
-      <div className='section2'>
+      {/* <div className='section2'>
         <div>
             <h2>Points rule</h2>
             <ol>
@@ -61,33 +54,12 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
                 <li>1 XCOIN = 100 Points</li>
             </ol>
         </div>
-      </div>
+      </div> */}
       <div className='section3'>
         <div>
-            <div className='card'>
-                <img src={Game1} alt="" />
-                <div className='name'>
-                <h3>Eternal Legacy</h3>
-                </div>
-            </div>
-            <div className='card'>
-                <img src={Game2} alt="" />
-                <div className='name'>
-                <h3>Adventure Forge</h3>
-                </div>
-            </div>
-            <div className='card'>
-                <img src={Game1} alt="" />
-                <div className='name'>
-                <h3>Eternal Legacy</h3>
-                </div>
-            </div>
-            <div className='card'>
-                <img src={Game2} alt="" />
-                <div className='name'>
-                <h3>Adventure Forge</h3>
-                </div>
-            </div>
+          {data?.images && data.images.map((img: string) => <div className='more-img'>
+                <img src={img} alt="" />
+            </div>)}
         </div>
       </div>
       <div className='section4'>

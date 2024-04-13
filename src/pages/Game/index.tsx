@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
-import EternaLegacyImg from 'assets/images/eterna_legacy.png'
+import EternaLegacyImg from 'assets/images/EternalLegacy/img1.png'
 import Forest1 from 'assets/images/forest1.png'
 import Forest2 from 'assets/images/forest2.png'
 import Forest3 from 'assets/images/forest3.png'
@@ -91,7 +91,7 @@ export default function Game() {
       </div>
       <div className='section2'>
         <h2>Popular Games</h2>
-        <div className='popular-game'>
+        <div className='popular-game' onClick={() => {history.push('/game/ancientforest')}}>
           <div><img src={Forest1} alt="Forest" /></div>
           <div>
             <div>

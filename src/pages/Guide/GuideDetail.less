@@ -3,12 +3,15 @@
     height: 100%;
     margin: 0 auto;
     position: relative;
-    background: url('../../assets/images/game-detail-bg.png') no-repeat;
+    background: linear-gradient(180deg, rgba(0, 2, 40, 0) 0%, #000228 61.31%), url('../../assets/images/EternalLegacy/bg.png') no-repeat;
     background-size: 100%;
     &>div{
         max-width: 1240px;
         margin: 0 auto;
         padding: 3rem 4rem;
+        @media (max-width: 768px) {
+            padding: 1rem;
+        }
     }
     .card{
         position: relative;
@@ -39,35 +42,55 @@
             font-weight: 600;
             padding-top: 80px;
             color: #98E6FF; 
+            @media (max-width: 768px) {
+                padding-top: 20px;
+            }
             span{
                 color: #949CB9;
                 font-size: 16px;
             } 
         }
+        p{
+            color: #fff;
+            margin-top: 20px;
+        }
         .intro{
-            display: grid;
-            grid-template-columns: 50% 50%;
-            justify-content: center;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            border-radius: 20px;
             overflow: hidden;
             &>div{
                 &:first-of-type{
                     img{
-                        width: 100%;
+                        width: 100px;
+                        @media (max-width: 768px) {
+                            width: 40px;
+                        }
                     }
                 }
                 &:last-of-type{
-                    padding: 40px;
-                    background: #17193B;
+                    a{
+                        color:#fff;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        padding: 5px 10px;
+                        border-radius: 20px;
+                        border: 1px solid #fff;
+                    }
                 }
             }
             h2{
-                font-size: 30px;
-                color: #fff;
-            }
-            p{
-                color: #fff;
+                font-size: 48px;
+                display: inline-block;
+                margin-left: 20px;
+                background: linear-gradient(180deg, #75F7FF 24%, #E3CDFF 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;  
+                @media (max-width: 768px) {
+                    font-size: 20px;
+                    margin-left: 10px;
+                }
             }
             button{
                 background-color: #A7F46A;
@@ -94,54 +117,36 @@
         }
     }
     .section2{
-        &>div{
-            background: linear-gradient(270deg, #030520 61.06%, #00034D 100%);
-            border-left: 4px solid #0C2A96;
-            padding: 25px 37px;
-        }
         h2{
             color: #98E6FF;
             font-size: 30px;
             font-weight: 600;
         }
-        ol{
-            padding-left: 20px;
-            li{
-                font-size: 16px;
-                font-weight: 400;
-                color: #fff;
+        .steps{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            &>div{
+                background: linear-gradient(270deg, #030520 61.06%, #00034D 100%);
+                border-left: 4px solid #0C2A96;
+                padding: 25px 37px;
+                @media (max-width: 768px) {
+                    padding: 20px;
+                }
             }
         }
-    }
-    .section3{
-        &>div{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            &>div{
-                border-radius: 10px;
-            }
-            img{
-                width: 100%;
-            }
-        } 
-    }
-    .section4{
-        h2{
-            color: #98E6FF;
-            font-size: 30px;
-            font-weight: 600;
+        h3{
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
         }
-        &>div{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            &>div{
-                border-radius: 10px;
-            }
-            img{
-                width: 100%;
-            }
+        p{
+            font-size: 16px;
+            font-weight: 500;
+            color: #949CB9;
         }
     }
 }
