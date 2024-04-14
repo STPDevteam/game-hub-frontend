@@ -29,9 +29,17 @@ import { ReactComponent as LinkIcon } from  'assets/svg/link.svg'
 import { ReactComponent as LikeIcon } from  'assets/svg/like.svg'
 import './index.less'
 
+
 const AWNSImg = ({name}: any) => {
+  const isImg = (url: any) => {
+    if(typeof url === 'string'){
+      return /\.(jpg|jpeg|png|gif|webp)(?:\?.*)?$/i
+    }else{
+      return false
+    }
+  }
   const path = useImgData(name)
-  return path ? <img src={path} alt="" /> : <Avatar style={{background: '#282A54'}} size={64} icon={<UserOutlined />} />
+  return name && isImg(path) ? <img src={path} alt="" /> : <Avatar style={{background: '#282A54'}} size={64} icon={<UserOutlined />} />
 }
 
 export default function Dashboard() {
@@ -267,36 +275,36 @@ export default function Dashboard() {
                     <div className='extra-btn'>{'More  >>'}</div>
                   </h2>
                   <div className='popular-games'>
-                    <div>
+                    <div onClick={() => {history.push('/game/dynamicavatar')}}>
                       <div>
-                        <img src={PopularGame1} alt="Popular Game" />
+                        <img src={Game2} alt="Popular Game" />
                       </div>
                       <div>
-                        <h3>Game Name 1</h3>
-                        <p><LikeIcon/> 13,300</p>
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <img src={PopularGame2} alt="Popular Game" />
-                      </div>
-                      <div>
-                        <h3>Game Name 2</h3>
-                        <p><LikeIcon/> 13,300</p>
+                        <h3>Dynamic avatar(Beta)</h3>
+                        {/* <p><LikeIcon/> 13,300</p> */}
                       </div>
                     </div>
-                    <div>
+                    <div  onClick={() => {history.push('/game/dice')}}>
                       <div>
-                        <img src={PopularGame3} alt="Popular Game" />
+                        <img src={Game3} alt="Popular Game" />
                       </div>
                       <div>
-                        <h3>Game Name 3</h3>
-                        <p><LikeIcon/> 13,300</p>
+                        <h3>DICE</h3>
+                        {/* <p><LikeIcon/> 13,300</p> */}
+                      </div>
+                    </div>
+                    <div onClick={() => {history.push('/game/ancientforest')}}>
+                      <div>
+                        <img src={Game4} alt="Popular Game" />
+                      </div>
+                      <div>
+                        <h3>Ancient Forest</h3>
+                        {/* <p><LikeIcon/> 13,300</p> */}
                       </div>
                     </div>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <h2>Popular NFT
                     <div className='extra-btn'>{'More  >>'}</div>
                   </h2>
@@ -326,7 +334,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
             </div>
         </div>
     </div>

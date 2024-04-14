@@ -2,10 +2,13 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { darken, lighten } from 'polished'
 import React, { useMemo, useContext } from 'react'
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import { useAWNSName } from 'hooks/useAWNSName'
 import { Activity } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import styled, { css, ThemeContext } from 'styled-components'
+import { useImgData } from '../../pages/Dashboard/hook'
 import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
 // import FortmaticIcon from '../../assets/images/fortmaticIcon.png'
 import PortisIcon from '../../assets/images/portisIcon.png'
@@ -122,11 +125,16 @@ const NetworkIcon = styled(Activity)`
   height: 16px;
 `
 
-const WalletIconBox = styled.img`
+const AvatorIcon = styled.div`
   margin-left: 0.25rem;
   margin-right: 0.5rem;
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  img{
+    width: 100%;
+  }
 `
 
 // we want the latest one to come first, so return negative if a is after b
@@ -166,6 +174,18 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
   return null
 }
 
+const AWNSImg = ({name}: any) => {
+  const isImg = (url: any) => {
+    if(typeof url === 'string'){
+      return /\.(jpg|jpeg|png|gif|webp)(?:\?.*)?$/i
+    }else{
+      return false
+    }
+  }
+  const path = useImgData(name)
+  return name && isImg(path) ? <img src={path} alt="" /> : <Avatar style={{background: '#282A54'}} size={28} icon={<UserOutlined />} />
+}
+
 function Web3StatusInner() {
   const { t } = useTranslation()
   const { account, connector, error } = useWeb3React()
@@ -196,6 +216,7 @@ function Web3StatusInner() {
           </RowBetween>
         ) : (
           <>
+            {<AvatorIcon><AWNSImg name={AWNSName}/></AvatorIcon>}
             <Text>{ENSName || AWNSName || shortenAddress(account)}</Text>
           </>
         )}

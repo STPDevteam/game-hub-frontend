@@ -12,6 +12,12 @@
             object-fit: cover;
             padding-bottom: 30px;
         }
+        .ant-avatar{
+            position: absolute;
+            top: calc(50% - 15px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
     .card{
         position: relative;
@@ -189,6 +195,9 @@
             &>div{
                 display: flex;
                 gap:  20px;
+                &>div{
+                    cursor: pointer;
+                }
                 img{
                     width: 80px;
                     height: 80px;
