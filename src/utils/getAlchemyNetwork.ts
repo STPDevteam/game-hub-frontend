@@ -1,4 +1,4 @@
-import { Network } from 'alchemy-sdk'
+import { Alchemy, Network } from 'alchemy-sdk'
 
 const getAlchemyNetwork = (chainId: number) => {
   if (chainId === 1) return Network.ETH_MAINNET
@@ -11,5 +11,16 @@ const getAlchemyNetwork = (chainId: number) => {
   if (chainId === 8453) return Network.BASE_MAINNET
   return Network.ETH_MAINNET
 }
+
+export const getAlchemy = (chainId: number) => {
+  const network = getAlchemyNetwork(chainId)
+  const config = {
+    apiKey: process.env.REACT_APP_ALCHEMY_KEY,
+    network,
+  }
+  const alchemy = new Alchemy(config)
+  return alchemy
+}
+
 
 export default getAlchemyNetwork

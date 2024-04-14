@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
-import { Tabs, Avatar } from 'antd';
+import { Tabs, Avatar, Button } from 'antd';
 import { useHistory } from 'react-router-dom'
 import { DoubleRightOutlined, UserOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
-import Awns from 'assets/images/awns.png'
-import { useGetUserAllNFT } from 'hooks/useGetUserNFT'
+import { ChainId } from 'constants/chainId';
 import { useAWNSNames } from 'hooks/useAWNSNames'
+import { useAccountByName } from 'hooks/useAccountByName'
 import { useImgData } from './hook'
+import { useToken721BalanceTokens } from 'hooks/useGetAccountOwnerAssets'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
 import Game3 from 'assets/images/game_3.png'
@@ -44,16 +45,28 @@ const AWNSImg = ({name}: any) => {
 
 export default function Dashboard() {
   const history = useHistory();
-  const [refresh, setRefresh] = useState<number>(-1)
   const { account, chainId } = useActiveWeb3React();
-  const { loading: NftLoading, data: nftData } = useGetUserAllNFT(
-    account || '',
-    chainId,
-    refresh,
-  )
-
+  const [currentName, setCurrentName] = useState<string>('')
   const names = useAWNSNames(account || '')
   console.log('names:', names)
+
+  const { tokenBoundAccount, nftAddress, tokenId } = useAccountByName(names?.[3]?.name);
+  console.log('tokenBoundAccount:', tokenBoundAccount)
+  console.log('nftAddress:', nftAddress)
+  console.log('tokenId:', tokenId)
+  const data = useToken721BalanceTokens(nftAddress, chainId || ChainId.MAINNET)
+  console.log('data:', data)
+
+  useEffect(() => {
+    if(names && names?.length > 0){
+      setCurrentName(names[0].name)
+    }
+  }, [names?.length])
+
+  const switchCurrentName = (name: string) => {
+    setCurrentName(name)
+  }
+
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -148,11 +161,15 @@ export default function Dashboard() {
                       <Slider {...settings}>
                         {names && names.map((data: any) => 
                           <div className='card2'>
-                            {/* <img src={Awns} alt="" /> */}
-                          <div className='userImg'><AWNSImg name={data.name}/></div>
+                            <div className='userImg'><AWNSImg name={data.name}/></div>
                             <div className='name'>
                               <div>{data.name}</div>
                               {/* <div><Tag color="#A7F46A">Level 1</Tag></div> */}
+                            </div>
+                            {currentName === data.name && <div className='current'>Current</div>}
+                            <div className='view'>
+                              <Button type='default' onClick={() =>{window.open(`https://awnsbase.stp.network/nameDetail?name=${data.name}`)}}>View</Button>
+                              <Button type='primary' onClick={() =>{switchCurrentName(data.name)}}>Switch</Button>
                             </div>
                           </div>
                         )}

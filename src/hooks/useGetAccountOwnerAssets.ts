@@ -1,9 +1,8 @@
 import { useRequest } from 'ahooks'
 import { useEffect, useMemo, useState } from 'react'
-import { useAccount } from 'wagmi'
-
 import { ChainId } from 'constants/chainId'
 import { getAlchemy } from 'utils/alchemy'
+import { useActiveWeb3React } from 'hooks'
 
 export interface Token721 {
   address: string
@@ -53,7 +52,7 @@ export function useToken721BalanceTokens(
   loading: boolean
   availableTokens: undefined | Array<Token721> | undefined
 } {
-  const { address: account } = useAccount()
+  const { account } = useActiveWeb3React()
 
   const { data, loading } = useRequest(
     async () => {
