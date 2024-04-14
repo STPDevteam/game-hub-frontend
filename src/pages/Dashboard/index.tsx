@@ -144,18 +144,20 @@ export default function Dashboard() {
                     <h2>AWNS
                     <div className='extra-btn' onClick={() => {window.open('https://awns.stp.network/')}}>{'Register new AWNS  >>'}</div>
                     </h2>
-                    <Slider {...settings}>
-                      {names && names.map((data: any) => 
-                        <div className='card2'>
-                          {/* <img src={Awns} alt="" /> */}
-                         <div className='userImg'><AWNSImg name={data.name}/></div>
-                          <div className='name'>
-                            <div>{data.name}</div>
-                            {/* <div><Tag color="#A7F46A">Level 1</Tag></div> */}
+                    {names && names.length > 0 &&
+                      <Slider {...settings}>
+                        {names && names.map((data: any) => 
+                          <div className='card2'>
+                            {/* <img src={Awns} alt="" /> */}
+                          <div className='userImg'><AWNSImg name={data.name}/></div>
+                            <div className='name'>
+                              <div>{data.name}</div>
+                              {/* <div><Tag color="#A7F46A">Level 1</Tag></div> */}
+                            </div>
                           </div>
-                        </div>
-                      )}
-                    </Slider>
+                        )}
+                      </Slider>
+                    }
                 </div>
                 <div className='section1'>
                     <h2>Game Console
