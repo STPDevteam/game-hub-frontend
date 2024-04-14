@@ -53,7 +53,6 @@ interface IResult {
   content: any[]
   next: string
 }
-const BaseUrl = `${process.env.NEXT_PUBLIC_BASE_URL_V3}`
 
 // const useGetUserNFT = ({
 //   name,

@@ -5,8 +5,9 @@ import { Text } from 'rebass'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router'
 import { MenuOutlined, SwapOutlined } from '@ant-design/icons';
+import type { MenuProps } from 'antd';
 import styled from 'styled-components'
-import { Select, Tooltip } from 'antd';
+import { Button, Dropdown, Tooltip } from 'antd';
 import { getChain } from 'constants/index'
 import Logo from '../../assets/images/logo.png'
 import { useActiveWeb3React } from '../../hooks'
@@ -156,7 +157,6 @@ const NetworkBox = styled.div`
   width: 100%;
   img{
     width: 30px;
-    height: 100%;
   }
 `
 
@@ -240,27 +240,6 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-const NETWORKS: any = [
-  {
-    value: ChainId.MAINNET,
-    label: (
-      <NetworkBox>
-        <img src={getChain(ChainId.MAINNET)?.icon} />
-        &nbsp;{getChain(ChainId.MAINNET)?.name}
-      </NetworkBox>
-    )
-  },
-  {
-    value: ChainId.BASE,
-    label: (
-      <NetworkBox>
-        <img src={getChain(ChainId.BASE)?.icon} />
-        &nbsp;{getChain(ChainId.BASE)?.name}
-      </NetworkBox>
-    )
-  }
-]
-
 export default function Header() {
   const location = useLocation()
   const history = useHistory();
@@ -327,6 +306,29 @@ export default function Header() {
       })
     })
   };
+
+  const items: MenuProps['items'] = [
+    {
+      key: ChainId.MAINNET,
+      label: getChain(ChainId.MAINNET)?.name,
+      icon: <img src={getChain(ChainId.MAINNET)?.icon} />
+    },
+    {
+      key: ChainId.BASE,
+      label: getChain(ChainId.BASE)?.name,
+      icon: <img src={getChain(ChainId.BASE)?.icon} />
+    }
+  ]
+
+  const handleMenuClick: MenuProps['onClick'] = e => {
+    switchNetwork(Number(e.key))
+  };
+  
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
+  
 
   return (
     <HeaderFrame ref={headerRef} className={`${isNavbarSticky ? 'sticky' : ''}`}>
@@ -404,15 +406,12 @@ export default function Header() {
               } */}
               {
                 !isMobile && chainId && getChain(chainId)?.name && 
-                <Select
-                  style={{borderRadius: '6px', marginRight: '10px'}}
-                  onChange={switchNetwork}
-                  options={NETWORKS}
-                  value={chainId}
-                  className='chainSelect'
-                  dropdownStyle={{minWidth: '130px'}}
-                  suffixIcon={<SwapOutlined style={{color: '#fff', fontSize: '9px'}} />}
-                />
+                <Dropdown menu={menuProps} className='chainDropdown'>
+                  <Button>
+                    <img src={getChain(chainId)?.icon} />
+                      <SwapOutlined style={{color: '#fff', fontSize: '9px'}} />
+                  </Button>
+                </Dropdown>
               }
             </TestnetWrapper>
             <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>

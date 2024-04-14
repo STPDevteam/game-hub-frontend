@@ -4,6 +4,7 @@ import { ChainId } from './chainId'
 import { injected } from '../connectors'
 import BaseChain from 'assets/svg/base.svg'
 import MainnetChain from 'assets/svg/eth.png'
+import LootChain from 'assets/svg/loot.svg'
 
 export const timeframeOptions = {
   WEEK: '1 week',
@@ -135,6 +136,19 @@ const initialChains: BaseChain[] = [
     scanName: 'base scan',
     vmType: 'EVM',
     rpcUrl: 'https://base-mainnet.g.alchemy.com/v2/1a2r_yoKeGEi5H7fRuhstRl2ll0V-30t',
+  },
+  {
+    id: ChainId.LOOT,
+    name: 'Loot Chain',
+    tokenSymbol: 'AGLD',
+    token: WETH[ChainId.LOOT],
+    wrappedTokenSymbol: 'WAGLD',
+    wrappedToken:  WETH[ChainId.LOOT],
+    icon: LootChain,
+    scanUrl: 'https://explorer.lootchain.com/',
+    scanName: 'Lootscan',
+    vmType: 'EVM',
+    rpcUrl: 'https://rpc.lootchain.com/http',
   }
 ]
 
@@ -153,7 +167,6 @@ export const Token_swap_contract_address: { [chainId in ChainId]?: string } = {
 
 export const UniversalResolver_contract_address: { [chainId in ChainId]?: string } = {
   [ChainId.MAINNET]: '0xaAD4A484AA1E810ffebc5152CeB0B87c5dfA25F0',
-  [ChainId.BASE]: '0x5aEFAA34EaDaC483ea542077D30505eF2472cfe3'
+  [ChainId.BASE]: '0xFd1Eb46EfEAf0134B4d21502930Fb330447f1d79'
 }
 
-export const APR_URL = process.env.REACT_APP_API_URL || 'https://swap.dev.fish/'

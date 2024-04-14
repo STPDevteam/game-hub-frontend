@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { RouteComponentProps } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import { getChain } from 'constants/index'
 import { useGameDetail } from './hooks'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
@@ -36,13 +37,16 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
             </p>
             <div className='info'>
                 <div>
-                    Support Chains: <img src={BaseChain} alt="Base"/> <img src={MainnetChain} alt="Mainnet"/>
+                    Support Chains: 
+                    {data?.supportedChain && data?.supportedChain.length > 0 ? data?.supportedChain.map((chain: number) => 
+                      <img src={getChain(chain)?.icon} alt="Base"/>
+                    ): '--'}
                 </div>
                 <div>
-                    Players: <span>2,300</span>
+                    {/* Players: <span>2,300</span> */}
                 </div>     
             </div>
-            <button>Play Now</button>
+            <button onClick={() => {window.open(data.website)}}>Play Now</button>
           </div>
         </div>
       </div>

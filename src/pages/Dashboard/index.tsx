@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
-import { Tabs, Tag } from 'antd';
+import { Tabs, Avatar } from 'antd';
 import { useHistory } from 'react-router-dom'
-import { DoubleRightOutlined } from '@ant-design/icons';
+import { DoubleRightOutlined, UserOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import Awns from 'assets/images/awns.png'
 import { useGetUserAllNFT } from 'hooks/useGetUserNFT'
+import { useAWNSNames } from 'hooks/useAWNSNames'
+import { useImgData } from './hook'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
 import Game3 from 'assets/images/game_3.png'
@@ -27,17 +29,23 @@ import { ReactComponent as LinkIcon } from  'assets/svg/link.svg'
 import { ReactComponent as LikeIcon } from  'assets/svg/like.svg'
 import './index.less'
 
+const AWNSImg = ({name}: any) => {
+  const path = useImgData(name)
+  return path ? <img src={path} alt="" /> : <Avatar style={{background: '#282A54'}} size={64} icon={<UserOutlined />} />
+}
 
 export default function Dashboard() {
   const history = useHistory();
   const [refresh, setRefresh] = useState<number>(-1)
   const { account, chainId } = useActiveWeb3React();
   const { loading: NftLoading, data: nftData } = useGetUserAllNFT(
-    '0x5aEFAA34EaDaC483ea542077D30505eF2472cfe3' || '',
+    account || '',
     chainId,
     refresh,
   )
-  console.log('nftData:', nftData)
+
+  const names = useAWNSNames(account || '')
+  console.log('names:', names)
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -129,27 +137,16 @@ export default function Dashboard() {
                     <div className='extra-btn' onClick={() => {window.open('https://awns.stp.network/')}}>{'Register new AWNS  >>'}</div>
                     </h2>
                     <Slider {...settings}>
+                      {names && names.map((data: any) => 
                         <div className='card2'>
-                          <img src={Awns} alt="" />
+                          {/* <img src={Awns} alt="" /> */}
+                         <div className='userImg'><AWNSImg name={data.name}/></div>
                           <div className='name'>
-                            <div>tatanick.aw</div>
-                            <div><Tag color="#A7F46A">Level 1</Tag></div>
+                            <div>{data.name}</div>
+                            {/* <div><Tag color="#A7F46A">Level 1</Tag></div> */}
                           </div>
                         </div>
-                        <div className='card2'>
-                          <img src={Awns} alt="" />
-                          <div className='name'>
-                            <div>tatanick.aw</div>
-                            <div><Tag color="#A7F46A">Level 1</Tag></div>
-                          </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Awns} alt="" />
-                          <div className='name'>
-                            <div>tatanick.aw</div>
-                            <div><Tag color="#A7F46A">Level 1</Tag></div>
-                          </div>
-                        </div>
+                      )}
                     </Slider>
                 </div>
                 <div className='section1'>
