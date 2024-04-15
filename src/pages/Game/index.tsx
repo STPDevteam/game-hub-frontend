@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
 import { getChain } from 'constants/index';
 import { ChainId } from 'constants/chainId';
-import EternaLegacyImg from 'assets/images/EternalLegacy/img1.png'
+import EternaLegacyImg from 'assets/images/EternaLegacyImg.png'
 import Forest1 from 'assets/images/forest1.png'
 import Forest2 from 'assets/images/forest2.png'
 import Forest3 from 'assets/images/forest3.png'
