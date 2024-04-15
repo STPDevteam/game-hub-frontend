@@ -22,7 +22,7 @@ export const network = new NetworkConnector({
   urls: {
     [ChainId.MAINNET]: NETWORK_URL,
     [ChainId.POLYGON]: 'https://polygon-rpc.com/',
-    [ChainId.BASE]: 'https://base-mainnet.g.alchemy.com/v2/1a2r_yoKeGEi5H7fRuhstRl2ll0V-30t',
+    [ChainId.BASE]: `https://base-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_KEY}`,
     [ChainId.KLAY_TEST]: 'https://api.baobab.klaytn.net:8651'
   },
   defaultChainId: NETWORK_CHAIN_ID

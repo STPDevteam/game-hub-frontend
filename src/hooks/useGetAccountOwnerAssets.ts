@@ -46,20 +46,16 @@ export const avatarNFTAddress: { [x in number]: string } = {
 }
 
 export function useToken721BalanceTokens(
-  token0Address: string,
+  account: string,
   chainId: ChainId,
 ): {
   loading: boolean
   availableTokens: undefined | Array<Token721> | undefined
 } {
-  const { account } = useActiveWeb3React()
-
   const { data, loading } = useRequest(
     async () => {
-      if (!chainId || !account || !token0Address) return undefined
-      const res = await getAlchemy(chainId).nft.getNftsForOwner(account, {
-        contractAddresses: [token0Address],
-      })
+      if (!chainId || !account) return undefined
+      const res = await getAlchemy(chainId).nft.getNftsForOwner(account)
 
       const tokens: Token721[] = res.ownedNfts.map((item) => ({
         chainId,
@@ -71,14 +67,14 @@ export function useToken721BalanceTokens(
           item.contract.openSeaMetadata.collectionName ??
           item.contract.name,
         symbol: item.contract?.symbol ?? item.collection?.slug,
-        tokenUri: item.tokenUri,
+        tokenUri: item.image.originalUrl,
         uri: item.contract.openSeaMetadata.imageUrl ?? undefined,
       }))
 
       return tokens
     },
     {
-      refreshDeps: [chainId, account, token0Address],
+      refreshDeps: [chainId, account],
     },
   )
 

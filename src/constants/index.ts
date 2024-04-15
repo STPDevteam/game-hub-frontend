@@ -135,7 +135,7 @@ const initialChains: BaseChain[] = [
     scanUrl: 'https://basescan.org/',
     scanName: 'base scan',
     vmType: 'EVM',
-    rpcUrl: 'https://base-mainnet.g.alchemy.com/v2/1a2r_yoKeGEi5H7fRuhstRl2ll0V-30t',
+    rpcUrl: `https://base-mainnet.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_KEY}`,
   },
   {
     id: ChainId.LOOT,

@@ -1,30 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
-import { Tabs, Avatar, Button } from 'antd';
 import { useHistory } from 'react-router-dom'
-import { DoubleRightOutlined, UserOutlined } from '@ant-design/icons';
+import { Tabs, Avatar, Button, Spin, Empty } from 'antd';
+import { DoubleRightOutlined, UserOutlined, LoadingOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import { ChainId } from 'constants/chainId';
 import { useAWNSNames } from 'hooks/useAWNSNames'
 import { useAccountByName } from 'hooks/useAccountByName'
 import { useImgData } from './hook'
+import { getChain } from 'constants/index';
 import { useToken721BalanceTokens } from 'hooks/useGetAccountOwnerAssets'
 import Game1 from 'assets/images/game_1.png'
 import Game2 from 'assets/images/game_2.png'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
-import Game5 from 'assets/images/game_5.png'
-import Game6 from 'assets/images/game_6.png'
-import Game7 from 'assets/images/game_7.png'
-import Game8 from 'assets/images/game_8.png'
-import PopularGame1 from 'assets/images/popular-game1.png'
-import PopularGame2 from 'assets/images/popular-game2.png'
-import PopularGame3 from 'assets/images/popular-game3.png'
-import NFT1 from 'assets/images/nft1.png'
-import NFT2 from 'assets/images/nft2.png'
-import NFT3 from 'assets/images/nft3.png'
-import NFT4 from 'assets/images/nft4.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import { ReactComponent as LinkIcon } from  'assets/svg/link.svg'
 import { ReactComponent as LikeIcon } from  'assets/svg/like.svg'
@@ -48,18 +38,19 @@ export default function Dashboard() {
   const { account, chainId } = useActiveWeb3React();
   const [currentName, setCurrentName] = useState<string>('')
   const names = useAWNSNames(account || '')
+  const { tokenBoundAccount, nftAddress, tokenId } = useAccountByName(currentName);
   console.log('names:', names)
-
-  const { tokenBoundAccount, nftAddress, tokenId } = useAccountByName(names?.[3]?.name);
-  console.log('tokenBoundAccount:', tokenBoundAccount)
   console.log('nftAddress:', nftAddress)
   console.log('tokenId:', tokenId)
-  const data = useToken721BalanceTokens(nftAddress, chainId || ChainId.MAINNET)
-  console.log('data:', data)
+
+  const nftData = useToken721BalanceTokens(tokenBoundAccount || '', chainId || ChainId.MAINNET)
+  console.log('nftData:', nftData)
 
   useEffect(() => {
     if(names && names?.length > 0){
       setCurrentName(names[0].name)
+    }else{
+      setCurrentName('')
     }
   }, [names?.length])
 
@@ -155,12 +146,13 @@ export default function Dashboard() {
             <div className='left-content'>
                 <div className='section1'>
                     <h2>AWNS
-                    <div className='extra-btn' onClick={() => {window.open('https://awns.stp.network/')}}>{'Register new AWNS  >>'}</div>
+                      <div className='extra-btn' onClick={() => {window.open('https://awns.stp.network/')}}>{'Register new AWNS  >>'}</div>
                     </h2>
+                    {(!names || names.length === 0) && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
                     {names && names.length > 0 &&
                       <Slider {...settings}>
                         {names && names.map((data: any) => 
-                          <div className='card2'>
+                          <div className='card2 awns-name'>
                             <div className='userImg'><AWNSImg name={data.name}/></div>
                             <div className='name'>
                               <div>{data.name}</div>
@@ -211,69 +203,22 @@ export default function Dashboard() {
                   <h2>Assets</h2>
                   <Tabs defaultActiveKey="1" moreIcon={<DoubleRightOutlined style={{color: '#fff'}}/>}>
                     <Tabs.TabPane tab="All" key="1">
-                      <div className='games'>
+                      {nftData?.loading && <div className='loading'><Spin indicator={<LoadingOutlined style={{ fontSize: 60 }} spin />} /></div>}
+                      {!nftData?.loading && (!nftData?.availableTokens || nftData?.availableTokens.length === 0) && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
+                      {!nftData?.loading && <div className='games'>
+                        {nftData?.availableTokens && nftData?.availableTokens?.map((data: any)=>  
                         <div className='card2'>
-                          <img src={Game1} alt="" />
+                          <img src={data.tokenUri} alt="" />
                           <div className='name'>
-                            <div>NFT Name#1</div>
+                            <div>{data.name}</div>
                           </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game2} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#2</div>
+                          <div className='chain'>
+                            {chainId && <img src={getChain(chainId)?.icon} alt="" />}
                           </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game3} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#3</div>
-                          </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game4} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#4</div>
-                          </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game5} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#5</div>
-                          </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game6} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#6</div>
-                          </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game7} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#7</div>
-                          </div>
-                        </div>
-                        <div className='card2'>
-                          <img src={Game8} alt="" />
-                          <div className='name'>
-                            <div>NFT Name#8</div>
-                          </div>
-                        </div>
+                        </div>)}
                       </div>
+                      }
                     </Tabs.TabPane>
-                    {/* <Tabs.TabPane tab="Ancient Forest (3)" key="2">
-                      Content of Tab Pane 2
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="Dynamic Avatar (5)" key="3">
-                      Content of Tab Pane 3
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="Adventure Forge (5)" key="4">
-                      Content of Tab Pane 3
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="Adventure Forge (5)" key="5">
-                      Content of Tab Pane 3
-                    </Tabs.TabPane> */}
                   </Tabs>
                 </div>
             </div>
