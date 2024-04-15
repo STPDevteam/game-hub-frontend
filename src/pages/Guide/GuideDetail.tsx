@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { RouteComponentProps } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useGuideDetail } from './hooks'
-import EternaLegacyAvatorImg from '../../assets/images/EternalLegacy/avatar.png'
 import { ReactComponent as WebsiteIcon } from  'assets/images/website.svg'
 
 import './GuideDetail.less'
@@ -23,8 +22,8 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
         <h1><span>Guide</span> / {data.name}</h1>
         <div className='intro'>
             <div>
-              <img src={EternaLegacyAvatorImg} alt="EternaLegacy" />
-              <h2>{data.name}</h2>
+              <img src={data?.avatar} alt="EternaLegacy" />
+              <h2>{data?.name}</h2>
             </div>
             <div><a href={data.website}><WebsiteIcon/> Website</a></div>
         </div>
