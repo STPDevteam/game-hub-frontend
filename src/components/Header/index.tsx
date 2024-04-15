@@ -263,6 +263,10 @@ export default function Header() {
   }, [chainId])
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
     window.addEventListener('scroll', fixNavBar);
     return () => {
       window.removeEventListener('scroll', fixNavBar);
