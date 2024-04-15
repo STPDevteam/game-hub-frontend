@@ -1,8 +1,11 @@
-import { getContractAddress } from '@myclique/awnsjs/dist/cjs/contracts/getContractAddress.js'
+
 import { useMemo } from 'react'
-import { labelhash } from '@myclique/awnsjs/dist/cjs/utils/labels'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TokenboundClient } from '@tokenbound/sdk'
+//@ts-ignore
+import { getContractAddress } from '@myclique/awnsjs/dist/cjs/contracts/getContractAddress.js'
+//@ts-ignore
+import { labelhash } from '@myclique/awnsjs/dist/cjs/utils/labels'
 import { useActiveWeb3React } from 'hooks'
 
 /**
