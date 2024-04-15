@@ -10,6 +10,8 @@ import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
 import BaseChain from 'assets/svg/base.svg'
 import MainnetChain from 'assets/svg/eth.png'
+import { ReactComponent as WebsiteIcon } from  'assets/images/website.svg'
+
 import './GameDetail.less'
 
 
@@ -31,7 +33,10 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
             <img src={data?.images && data?.images[0]} alt="" />
           </div>
           <div>
-            <h2>{data.name}</h2>
+            <div className='head'>
+              <h2>{data.name}</h2>
+              <a href={data.website} target='_blank'><WebsiteIcon/> Website</a>
+            </div>
             <p>
             {data.description}
             </p>
@@ -62,8 +67,8 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
       <div className='section3'>
         <div>
           {data?.images && data.images.map((img: string) => <div className='more-img'>
-                <img src={img} alt="" />
-            </div>)}
+            <img src={img} alt="" />
+          </div>)}
         </div>
       </div>
       <div className='section4'>

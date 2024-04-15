@@ -2,6 +2,8 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
+import { getChain } from 'constants/index';
+import { ChainId } from 'constants/chainId';
 import EternaLegacyImg from 'assets/images/EternalLegacy/img1.png'
 import Forest1 from 'assets/images/forest1.png'
 import Forest2 from 'assets/images/forest2.png'
@@ -75,7 +77,7 @@ export default function Game() {
   return (
     <div className="container-game">
       <div className='section1'>
-        <h1>Play on Clique</h1>
+        <h1></h1>
         <div className='intro'>
           <div>
             <img src={EternaLegacyImg} alt="EternaLegacy" />
@@ -97,7 +99,13 @@ export default function Game() {
             <div>
               <div><img src={Forest2} alt="Forest" /></div>
               <div>
-                <h3>ANCIENT FOREST</h3>
+                <div className='head'>
+                  <h3>ANCIENT FOREST</h3>
+                  <div>
+                    <img src={getChain(ChainId.MAINNET)?.icon} alt="Base"/>
+                    <img src={getChain(ChainId.BASE)?.icon} alt="Base"/>
+                  </div>
+                </div>
                 <p>The forest is full of temptations and traps, use your wits to travel through this ancient forest, there will be unexpected rewards.</p>
               </div>
             </div>

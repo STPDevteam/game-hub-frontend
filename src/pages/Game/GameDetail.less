@@ -73,6 +73,21 @@
             @media (max-width: 768px) {
                 grid-template-columns: 1fr;
             }
+            .head{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                a{
+                    color:#fff;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    border: 1px solid #fff;
+                }
+            }
             &>div{
                 height: 380px;
                 @media (max-width: 768px) {
@@ -96,6 +111,8 @@
             h2{
                 font-size: 30px;
                 color: #fff;
+                font-weight: 700;
+                margin-bottom: 0;
             }
             p{
                 color: #fff;
