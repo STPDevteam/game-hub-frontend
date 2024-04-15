@@ -30,7 +30,7 @@
     "@types/testing-library__cypress": "^5.0.5",
     "@types/wcag-contrast": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "4.18.0",
-    "@typescript-eslint/parser": "4.18.0",
+    "@typescript-eslint/parser": "^7.6.0",
     "@uniswap/governance": "^1.0.2",
     "@uniswap/liquidity-staker": "^1.0.2",
     "@uniswap/merkle-distributor": "1.0.1",
