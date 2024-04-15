@@ -20,7 +20,7 @@
     "jsx": "preserve",
     "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["react-spring", "jest"],
+    "types": [],
     "baseUrl": "src",
     "strict": true,
     "isolatedModules": true
@@ -32,6 +32,6 @@
     "declaration.d.ts",
     "constants.d.ts"
   ],
-  "exclude": ["node_modules", "./build", "cypress", "./src/charting_library/**/*", "public"],
-  "typeRoots": ["node_modules", "@types"]
+  "exclude": ["node_modules", "./build", "cypress", "./src/charting_library/**/*", "public", "./node_modules/viem/_types/accounts/types.d.ts"],
+  "typeRoots": ["node_modules", "@types", "./node_modules/@types"]
 }

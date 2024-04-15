@@ -1,6 +1,7 @@
 
 import { useMemo } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
+//@ts-ignore
 import { TokenboundClient } from '@tokenbound/sdk'
 //@ts-ignore
 import { getContractAddress } from '@myclique/awnsjs/dist/cjs/contracts/getContractAddress.js'
