@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import { useHistory } from 'react-router-dom'
 import { useActiveWeb3React } from '../../hooks'
 import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
+import Game2 from 'assets/images/game_2.jpg'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
 import './index.less'

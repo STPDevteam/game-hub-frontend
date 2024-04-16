@@ -12,7 +12,7 @@ import { useImgData } from './hook'
 import { getChain } from 'constants/index';
 import { useToken721BalanceTokens } from 'hooks/useGetAccountOwnerAssets'
 import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
+import Game2 from 'assets/images/game_2.jpg'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'

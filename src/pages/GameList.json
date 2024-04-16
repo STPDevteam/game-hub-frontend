@@ -7,7 +7,7 @@
         "supportedChain": [1, 8453],
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/ancient-forest/game-tutorial",
         "bg":"./images/AncientForest/bg.png",
-        "images":["./images/AncientForest/img1.jpg", "./images/AncientForest/img2.jpg"]
+        "images":["./images/AncientForest/img1.jpg", "./images/AncientForest/img2.jpg", "./images/AncientForest/img3.jpg", "./images/AncientForest/img4.png"]
     },
     {
         "id": "dynamicavatar",
@@ -27,7 +27,7 @@
         "supportedChain": [5151706],
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/dice",
         "bg":"./images/Dice/bg.png",
-        "images":["./images/Dice/img1.png", "./images/Dice/img2.png", "./images/Dynamic/img2.png"]
+        "images":["./images/Dice/img1.png", "./images/Dice/img2.png", "./images/Dice/img3.png", "./images/Dice/img4.png"]
     },
     {
         "id": "eternallegacy",

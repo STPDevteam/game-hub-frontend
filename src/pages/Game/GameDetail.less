@@ -4,11 +4,22 @@
     margin: 0 auto;
     position: relative;
     // background: url('../../assets/images/game-detail-bg.png') no-repeat;
-    background-size: 100%, 100%;
+    background-size: 100%, 100% 100vh;
+    .bg{
+        position: absolute;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        z-index: 1;
+        background-size: 100%, 100%!important;
+        opacity: 0.8;
+    }
     &>div{
         max-width: 1240px;
         margin: 0 auto;
         padding: 3rem 4rem;
+        position: relative;
+        z-index: 10;
         @media (max-width: 768px) {
             padding: 1rem;
         }
@@ -102,7 +113,7 @@
                 }
                 &:last-of-type{
                     padding: 40px;
-                    background: #17193B;
+                    background: linear-gradient(90deg, #01044E 0%, #040520 100%);
                     @media (max-width: 768px) {
                         padding: 20px;
                     }
@@ -166,6 +177,7 @@
         }
     }
     .section3{
+        padding-top: 0;
         &>div{
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -177,7 +189,11 @@
                 border-radius: 10px;
             }
             img{
-                width: 100%;
+                height: 194px;
+                object-fit: cover;
+                @media (max-width: 768px) {
+                    width: 100%;
+                }
             }
         } 
     }
@@ -186,6 +202,9 @@
             color: #98E6FF;
             font-size: 30px;
             font-weight: 600;
+        }
+        h3{
+            font-size: 26px!important;
         }
         &>div{
             display: grid;
@@ -199,6 +218,12 @@
             }
             img{
                 width: 100%;
+                height: 330px;
+                object-fit: cover;
+                @media (max-width: 768px) {
+                    width: 100%;
+                    height: auto;
+                }
             }
         }
     }

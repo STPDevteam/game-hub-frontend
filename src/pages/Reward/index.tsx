@@ -5,7 +5,7 @@ import { DoubleRightOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import Awns from 'assets/images/awns.png'
 import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
+import Game2 from 'assets/images/game_2.jpg'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
 import Game5 from 'assets/images/game_5.png'

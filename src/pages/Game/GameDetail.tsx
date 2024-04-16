@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { getChain } from 'constants/index'
 import { useGameDetail } from './hooks'
 import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
+import Game2 from 'assets/images/game_2.jpg'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
 import BaseChain from 'assets/svg/base.svg'
@@ -25,7 +25,8 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
   const history = useHistory();
 
   return (
-    <div className="container-gamedetail" style={{background: `linear-gradient(180deg, rgba(0, 2, 40, 0) 0%, #000228 100%), top / contain url(${data?.bg}) no-repeat`}}>
+    <div className="container-gamedetail">
+      <div className='bg' style={{background: `linear-gradient(180deg, rgba(0, 2, 40, 0) 0%, #000228 100%), url(${data?.bg}) no-repeat`}}></div>
       <div className='section1'>
         <h1><span>Games</span> / {data.name}</h1>
         <div className='intro'>
