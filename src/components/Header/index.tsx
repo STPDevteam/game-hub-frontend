@@ -21,9 +21,11 @@ import Web3Status from '../Web3Status'
 import './index.less'
 
 const RowBetweenDiv = styled(RowBetween)`
-  padding: 1rem 8rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 3rem 4rem;
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    padding: 0;
+    padding: 0 1rem;
   `};
 `
 
