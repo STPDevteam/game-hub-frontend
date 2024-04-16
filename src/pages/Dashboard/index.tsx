@@ -197,7 +197,7 @@ export default function Dashboard() {
                     </Slider>
                 </div>
                 <div className='section1'>
-                  <h2>Assets</h2>
+                  <h2 style={{marginBottom: 0}}>Assets</h2>
                   <Tabs defaultActiveKey="1" moreIcon={<DoubleRightOutlined style={{color: '#fff'}}/>}>
                     <Tabs.TabPane tab="All" key="1">
                       {nftData?.loading && <div className='loading'><Spin indicator={<LoadingOutlined style={{ fontSize: 60 }} spin />} /></div>}
