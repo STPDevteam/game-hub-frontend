@@ -10,7 +10,7 @@ import Forest2 from 'assets/images/forest2.png'
 import Forest3 from 'assets/images/forest3.png'
 import Forest4 from 'assets/images/forest4.png'
 import Forest5 from 'assets/images/forest5.png'
-import UpcomingGame1 from 'assets/images/upcoming_game_1.png'
+import UpcomingGame1 from 'assets/images/upcoming_game_1.jpg'
 import UpcomingGame2 from 'assets/images/upcoming_game_2.png'
 import UpcomingGame3 from 'assets/images/upcoming_game_3.png'
 import Game1 from 'assets/images/game_1.png'
@@ -120,15 +120,15 @@ export default function Game() {
       <div className='section3'>
         <div>
           <h2>Upcoming Games</h2>
-          <div>
-            <Slider {...settings}>
+          <div className='games'>
+            {/* <Slider {...settings}> */}
               <div className='card'>
                 <img src={UpcomingGame1} alt="" />
                 <div className='name'>
-                  <h3>HERO2</h3>
+                  <h3>ARCADE WORLD</h3>
                 </div>
               </div>
-              <div className='card'>
+              {/* <div className='card'>
                 <img src={UpcomingGame2} alt="" />
                 <div className='name'>
                   <h3>Adventure Forge</h3>
@@ -139,8 +139,8 @@ export default function Game() {
                 <div className='name'>
                   <h3>DICE</h3>
                 </div>
-              </div>
-            </Slider>
+              </div> */}
+            {/* </Slider> */}
           </div>
         </div>
       </div>
