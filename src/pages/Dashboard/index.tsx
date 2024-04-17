@@ -1,30 +1,63 @@
-import React, { useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
+import { useHistory } from 'react-router-dom'
+import { Tabs, Avatar, Button, Spin, Empty } from 'antd';
+import { DoubleRightOutlined, UserOutlined, LoadingOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
-import EternaLegacyImg from 'assets/images/eterna_legacy.png'
-import Forest1 from 'assets/images/forest1.png'
-import Forest2 from 'assets/images/forest2.png'
-import Forest3 from 'assets/images/forest3.png'
-import Forest4 from 'assets/images/forest4.png'
-import Forest5 from 'assets/images/forest5.png'
-import UpcomingGame1 from 'assets/images/upcoming_game_1.png'
-import UpcomingGame2 from 'assets/images/upcoming_game_2.png'
-import UpcomingGame3 from 'assets/images/upcoming_game_3.png'
+import { ChainId } from 'constants/chainId';
+import { useAWNSNames } from 'hooks/useAWNSNames'
+import { useAccountByName } from 'hooks/useAccountByName'
+import { useImgData } from './hook'
+import { getChain } from 'constants/index';
+import { useToken721BalanceTokens } from 'hooks/useGetAccountOwnerAssets'
 import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
+import Game2 from 'assets/images/game_2.jpg'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
-import Game5 from 'assets/images/game_5.png'
-import Game6 from 'assets/images/game_6.png'
-import Game7 from 'assets/images/game_7.png'
-import Game8 from 'assets/images/game_8.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
+import { ReactComponent as LinkIcon } from  'assets/svg/link.svg'
+import { ReactComponent as LikeIcon } from  'assets/svg/like.svg'
 import './index.less'
 
 
+const AWNSImg = ({name}: any) => {
+  const isImg = (url: any) => {
+    if(typeof url === 'string'){
+      return /\.(jpg|jpeg|png|gif|webp)(?:\?.*)?$/i
+    }else{
+      return false
+    }
+  }
+  const path = useImgData(name)
+  return name && isImg(path) ? <img src={path} alt="" /> : <Avatar style={{background: '#282A54'}} size={64} icon={<UserOutlined />} />
+}
+
 export default function Dashboard() {
-  const { account, chainId, library } = useActiveWeb3React()
+  const history = useHistory();
+  const { account, chainId } = useActiveWeb3React();
+  const [currentName, setCurrentName] = useState<string>('')
+  const names = useAWNSNames(account || '')
+  const { tokenBoundAccount, nftAddress, tokenId } = useAccountByName(currentName);
+  console.log('names:', names)
+  console.log('nftAddress:', nftAddress)
+  console.log('tokenId:', tokenId)
+
+  const nftData = useToken721BalanceTokens(tokenBoundAccount || '', chainId || ChainId.MAINNET)
+  console.log('nftData:', nftData)
+
+  useEffect(() => {
+    if(names && names?.length > 0){
+      setCurrentName(names[0].name)
+    }else{
+      setCurrentName('')
+    }
+  }, [names?.length])
+
+  const switchCurrentName = (name: string) => {
+    setCurrentName(name)
+  }
+
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -37,12 +70,44 @@ export default function Dashboard() {
       </button>
     );
   }
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }
+    ],
+    nextArrow: <SampleNextArrow />,
+  };
+  const settings2 = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     responsive: [
       {
         breakpoint: 1024,
@@ -74,59 +139,165 @@ export default function Dashboard() {
 
   return (
     <div className="container-dashboard">
-      <div className='section1'>
-        <h1>Rewards</h1>
-        <p>Join Clique early access and earn NFTs</p>
-      </div>
-      <div className='section2'>
-        <h2>Popular Games</h2>
-        <div className='popular-game'>
-          <div><img src={Forest1} alt="Forest" /></div>
-          <div>
-            <div>
-              <div><img src={Forest2} alt="Forest" /></div>
-              <div>
-                <h3>ANCIENT FOREST</h3>
-                <p>The forest is full of temptations and traps, use your wits to travel through this ancient forest, there will be unexpected rewards.</p>
-              </div>
-            </div>
-            <div>
-              <div><img src={Forest3} alt="Forest" /></div>
-              <div><img src={Forest4} alt="Forest" /></div>
-              <div><img src={Forest5} alt="Forest" /></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='section3'>
-        <h2>Upcoming Games</h2>
         <div>
-          <Slider {...settings}>
-            <div>
-              <img src={UpcomingGame1} alt="" />
+            <div className='left-content'>
+                <div className='section1'>
+                    <h2>AWNS
+                      <div className='extra-btn' onClick={() => {window.open('https://awns.stp.network/')}}>{'Register new AWNS  >>'}</div>
+                    </h2>
+                    {(!names || names.length === 0) && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
+                    {names && names.length > 0 &&
+                      <Slider {...settings}>
+                        {names && names.map((data: any) => 
+                          <div className='card2 awns-name'>
+                            <div className='userImg'><AWNSImg name={data.name}/></div>
+                            <div className='name'>
+                              <div>{data.name}</div>
+                              {/* <div><Tag color="#A7F46A">Level 1</Tag></div> */}
+                            </div>
+                            {currentName === data.name && <div className='current'>Current</div>}
+                            <div className='view'>
+                              <Button type='default' onClick={() =>{window.open(`https://awnsbase.stp.network/nameDetail?name=${data.name}`)}}>View</Button>
+                              <Button type='primary' onClick={() =>{switchCurrentName(data.name)}}>Switch</Button>
+                            </div>
+                          </div>
+                        )}
+                      </Slider>
+                    }
+                </div>
+                <div className='section1'>
+                    <h2>Game Console
+                      {/* <div className='extra-btn'>{'Points Record  >>'}</div> */}
+                    </h2>
+                    <Slider {...settings2}>
+                      <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
+                        <img src={Game1} alt="" />
+                        <div className='name'>
+                          <h3>Eternal Legacy</h3>
+                        </div>
+                      </div>
+                      <div className='card' onClick={() => {history.push('/game/dynamicavatar')}}>
+                        <img src={Game2} alt="" />
+                        <div className='name'>
+                          <h3>Dynamic avatar(Beta)</h3>
+                        </div>
+                      </div>
+                      <div className='card' onClick={() => {history.push('/game/dice')}}>
+                        <img src={Game3} alt="" />
+                        <div className='name'>
+                          <h3>DICE</h3>
+                        </div>
+                      </div>
+                      <div className='card' onClick={() => {history.push('/game/ancientforest')}}>
+                        <img src={Game4} alt="" />
+                        <div className='name'>
+                          <h3>Ancient Forest</h3>
+                        </div>
+                      </div>
+                    </Slider>
+                </div>
+                <div className='section1'>
+                  <h2 style={{marginBottom: 0}}>Assets</h2>
+                  <Tabs defaultActiveKey="1" moreIcon={<DoubleRightOutlined style={{color: '#fff'}}/>}>
+                    <Tabs.TabPane tab="All" key="1">
+                      {nftData?.loading && <div className='loading'><Spin indicator={<LoadingOutlined style={{ fontSize: 60 }} spin />} /></div>}
+                      {!nftData?.loading && (!nftData?.availableTokens || nftData?.availableTokens.length === 0) && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
+                      {!nftData?.loading && <div className='games'>
+                        {nftData?.availableTokens && nftData?.availableTokens?.map((data: any)=>  
+                        <div className='card2'>
+                          <img src={data.tokenUri} alt="" />
+                          <div className='name'>
+                            <div>{data.name}</div>
+                          </div>
+                          <div className='chain'>
+                            {chainId && <img src={getChain(chainId)?.icon} alt="" />}
+                          </div>
+                        </div>)}
+                      </div>
+                      }
+                    </Tabs.TabPane>
+                  </Tabs>
+                </div>
             </div>
-            <div>
-              <img src={UpcomingGame2} alt="" />
+            <div className='right-content'>
+                <div>
+                    <h2>Learn More
+                      <div className='extra-btn'>{'More  >>'}</div>
+                    </h2>
+                    <ul>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service/how-to-guide' target='_blank'>How to Create AWNS<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service/how-to-guide' target='_blank'>How to manipulate assets in the ERC-6551 account?<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/stp/scaling-onchain-gaming' target='_blank'>Scaling Onchain Gaming?<LinkIcon/></a></li>
+                        <li><a href='https://stpdao.gitbook.io/whitepaper/stp/pioneer-ai-gaming-on-base' target='_blank'>Pioneer AI Gaming on Base?<LinkIcon/></a></li>
+                    </ul>
+                </div>
+                <div>
+                  <h2>Popular Games
+                    <div className='extra-btn'>{'More  >>'}</div>
+                  </h2>
+                  <div className='popular-games'>
+                    <div onClick={() => {history.push('/game/dynamicavatar')}}>
+                      <div>
+                        <img src={Game2} alt="Popular Game" />
+                      </div>
+                      <div>
+                        <h3>Dynamic avatar(Beta)</h3>
+                        {/* <p><LikeIcon/> 13,300</p> */}
+                      </div>
+                    </div>
+                    <div  onClick={() => {history.push('/game/dice')}}>
+                      <div>
+                        <img src={Game3} alt="Popular Game" />
+                      </div>
+                      <div>
+                        <h3>DICE</h3>
+                        {/* <p><LikeIcon/> 13,300</p> */}
+                      </div>
+                    </div>
+                    <div onClick={() => {history.push('/game/ancientforest')}}>
+                      <div>
+                        <img src={Game4} alt="Popular Game" />
+                      </div>
+                      <div>
+                        <h3>Ancient Forest</h3>
+                        {/* <p><LikeIcon/> 13,300</p> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <div>
+                  <h2>Popular NFT
+                    <div className='extra-btn'>{'More  >>'}</div>
+                  </h2>
+                  <div className='nfts'>
+                    <div className='card'>
+                      <img src={NFT1} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#1</div>
+                      </div>
+                    </div>
+                    <div className='card'>
+                      <img src={NFT2} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#2</div>
+                      </div>
+                    </div>
+                    <div className='card'>
+                      <img src={NFT3} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#3</div>
+                      </div>
+                    </div>
+                    <div className='card'>
+                      <img src={NFT4} alt="NFT" />
+                      <div className='name'>
+                        <div>NFT Name#4</div>
+                      </div>
+                    </div>
+                  </div>
+                </div> */}
             </div>
-            <div>
-              <img src={UpcomingGame3} alt="" />
-            </div>
-          </Slider>
         </div>
-      </div>
-      <div className='section4'>
-        <h2>All Games</h2>
-        <div>
-          <div><img src={Game1} alt="" /></div>
-          <div><img src={Game2} alt="" /></div>
-          <div><img src={Game3} alt="" /></div>
-          <div><img src={Game4} alt="" /></div>
-          <div><img src={Game5} alt="" /></div>
-          <div><img src={Game6} alt="" /></div>
-          <div><img src={Game7} alt="" /></div>
-          <div><img src={Game8} alt="" /></div>
-        </div>
-      </div>
     </div>
   )
 }

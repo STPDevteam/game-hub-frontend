@@ -117,7 +117,7 @@ const WALLET_VIEWS = {
 export default function WalletModal({
   pendingTransactions,
   confirmedTransactions,
-  ENSName
+  ENSName,
 }: {
   pendingTransactions: string[] // hashes of pending
   confirmedTransactions: string[] // hashes of confirmed

@@ -8,6 +8,7 @@ import { ERC20_BYTES32_ABI } from '../constants/abis/erc20'
 import ERC20_ABI from '../constants/abis/erc20.json'
 import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { TOKEN_SWAP_ABI } from 'constants/abis/TokenSwap'
+import { UNIVERSAL_RESOLVER_ABI } from 'constants/abis/UniversalResolver'
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
 import { ChainId } from 'constants/chainId'
@@ -84,4 +85,8 @@ export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contrac
 }
 export function useSwapContract(swapAddress?: string): Contract | null {
   return useContract(swapAddress, TOKEN_SWAP_ABI, true)
+}
+
+export function useUniversalResolverContract(address: string | undefined): Contract | null {
+  return useContract(address, UNIVERSAL_RESOLVER_ABI, true)
 }

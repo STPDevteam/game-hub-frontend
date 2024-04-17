@@ -1,18 +1,20 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
-import { useActiveWeb3React } from '../../hooks'
-import EternaLegacyImg from 'assets/images/eterna_legacy.png'
+import { useHistory } from 'react-router-dom'
+import { getChain } from 'constants/index';
+import { ChainId } from 'constants/chainId';
+import EternaLegacyImg from 'assets/images/EternaLegacyImg.png'
 import Forest1 from 'assets/images/forest1.png'
 import Forest2 from 'assets/images/forest2.png'
 import Forest3 from 'assets/images/forest3.png'
 import Forest4 from 'assets/images/forest4.png'
 import Forest5 from 'assets/images/forest5.png'
-import UpcomingGame1 from 'assets/images/upcoming_game_1.png'
+import UpcomingGame1 from 'assets/images/upcoming_game_1.jpg'
 import UpcomingGame2 from 'assets/images/upcoming_game_2.png'
 import UpcomingGame3 from 'assets/images/upcoming_game_3.png'
 import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.png'
+import Game2 from 'assets/images/game_2.jpg'
 import Game3 from 'assets/images/game_3.png'
 import Game4 from 'assets/images/game_4.png'
 import Game5 from 'assets/images/game_5.png'
@@ -24,7 +26,7 @@ import './index.less'
 
 
 export default function Game() {
-  const { account, chainId, library } = useActiveWeb3React()
+  const history = useHistory();
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
@@ -75,7 +77,7 @@ export default function Game() {
   return (
     <div className="container-game">
       <div className='section1'>
-        <h1>Play on Clique</h1>
+        <h1></h1>
         <div className='intro'>
           <div>
             <img src={EternaLegacyImg} alt="EternaLegacy" />
@@ -85,19 +87,25 @@ export default function Game() {
             <p>
             Enter the realm of "Eternal Legacy," where the echoes of a fallen empire set the stage for a groundbreaking adventure. Dive into a card game that merges strategic mastery with the revolutionary power of AI and blockchain technology.
             </p>
-            <button>Play Now</button>
+            <button onClick={() => {window.open('https://eternallegacy.xyz')}}>Play Now</button>
           </div>
         </div>
       </div>
       <div className='section2'>
         <h2>Popular Games</h2>
-        <div className='popular-game'>
+        <div className='popular-game' onClick={() => {history.push('/game/ancientforest')}}>
           <div><img src={Forest1} alt="Forest" /></div>
           <div>
             <div>
               <div><img src={Forest2} alt="Forest" /></div>
               <div>
-                <h3>ANCIENT FOREST</h3>
+                <div className='head'>
+                  <h3>ANCIENT FOREST</h3>
+                  <div>
+                    <img src={getChain(ChainId.MAINNET)?.icon} alt="Base"/>
+                    <img src={getChain(ChainId.BASE)?.icon} alt="Base"/>
+                  </div>
+                </div>
                 <p>The forest is full of temptations and traps, use your wits to travel through this ancient forest, there will be unexpected rewards.</p>
               </div>
             </div>
@@ -110,32 +118,59 @@ export default function Game() {
         </div>
       </div>
       <div className='section3'>
-        <h2>Upcoming Games</h2>
         <div>
-          <Slider {...settings}>
-            <div>
-              <img src={UpcomingGame1} alt="" />
-            </div>
-            <div>
-              <img src={UpcomingGame2} alt="" />
-            </div>
-            <div>
-              <img src={UpcomingGame3} alt="" />
-            </div>
-          </Slider>
+          <h2>Upcoming Games</h2>
+          <div className='games'>
+            {/* <Slider {...settings}> */}
+              <div className='card'>
+                <img src={UpcomingGame1} alt="" />
+                <div className='name'>
+                  <h3>ARCADE WORLD</h3>
+                </div>
+              </div>
+              {/* <div className='card'>
+                <img src={UpcomingGame2} alt="" />
+                <div className='name'>
+                  <h3>Adventure Forge</h3>
+                </div>
+              </div>
+              <div className='card'>
+                <img src={UpcomingGame3} alt="" />
+                <div className='name'>
+                  <h3>DICE</h3>
+                </div>
+              </div> */}
+            {/* </Slider> */}
+          </div>
         </div>
       </div>
       <div className='section4'>
         <h2>All Games</h2>
         <div>
-          <div><img src={Game1} alt="" /></div>
-          <div><img src={Game2} alt="" /></div>
-          <div><img src={Game3} alt="" /></div>
-          <div><img src={Game4} alt="" /></div>
-          <div><img src={Game5} alt="" /></div>
-          <div><img src={Game6} alt="" /></div>
-          <div><img src={Game7} alt="" /></div>
-          <div><img src={Game8} alt="" /></div>
+          <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
+            <img src={Game1} alt="" />
+            <div className='name'>
+              <h3>Eternal Legacy</h3>
+            </div>
+          </div>
+          <div className='card' onClick={() => {history.push('/game/dynamicavatar')}}>
+            <img src={Game2} alt="" />
+            <div className='name'>
+              <h3>Dynamic avatar(Beta)</h3>
+            </div>
+          </div>
+          <div className='card' onClick={() => {history.push('/game/dice')}}>
+            <img src={Game3} alt="" />
+            <div className='name'>
+              <h3>DICE</h3>
+            </div>
+          </div>
+          <div className='card' onClick={() => {history.push('/game/ancientforest')}}>
+            <img src={Game4} alt="" />
+            <div className='name'>
+              <h3>Ancient Forest</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>

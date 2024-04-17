@@ -2,9 +2,13 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
 import { darken, lighten } from 'polished'
 import React, { useMemo, useContext } from 'react'
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+import { useAWNSName } from 'hooks/useAWNSName'
 import { Activity } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import styled, { css, ThemeContext } from 'styled-components'
+import { useImgData } from '../../pages/Dashboard/hook'
 import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
 // import FortmaticIcon from '../../assets/images/fortmaticIcon.png'
 import PortisIcon from '../../assets/images/portisIcon.png'
@@ -59,14 +63,15 @@ const Web3StatusError = styled(Web3StatusGeneric)`
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
-  background-color: ${({ theme }) => theme.primary6};
+  background-color: #0049C6;
   border: none;
-  color: ${({ theme }) => theme.text5};
+  color: #fff;
   font-weight: 500;
-
+  height: 50px;
+  border-radius: 25px;
   :hover,
   :focus {
-    background-color: ${({ theme }) => darken(0.03, theme.primary6)};
+    background-color: rgba(0, 73, 198, 0.9)!important;
     /* border: 1px solid ${({ theme }) => darken(0.05, theme.primary6)}; */
     color: ${({ theme }) => theme.primaryText2};
   }
@@ -74,29 +79,30 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
   ${({ faded }) =>
     faded &&
     css`
-      background-color: ${({ theme }) => theme.primary6};
+      // background-color: rgba(0, 0, 0, 0.4);
       border: none;
-      color: ${({ theme }) => theme.primaryText2};
+      color: #fff;
 
       :hover,
       :focus {
-        /* border: 1px solid ${({ theme }) => darken(0.05, theme.primary6)}; */
-        color: ${({ theme }) => darken(0.05, theme.primaryText2)};
+        color: #fff;
       }
     `}
 `
 
 const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
-  background-color: ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg2)};
-  border: 1px solid ${({ pending, theme }) => (pending ? theme.primary1 : theme.bg3)};
-  color: ${({ pending, theme }) => (pending ? theme.white : theme.text1)};
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
+  color: #fff;
   font-weight: 500;
+  height: 50px;
+  border-radius: 25px;
   :hover,
   :focus {
-    background-color: ${({ pending, theme }) => (pending ? darken(0.05, theme.primary1) : theme.bg6)};
+    background-color: rgba(0, 0, 0, 0.4);
 
     :focus {
-      border: 1px solid ${({ pending, theme }) => (pending ? darken(0.1, theme.primary1) : darken(0.1, theme.bg3))};
+      border: 1px solid var(--border-color);
     }
   }
 `
@@ -119,11 +125,16 @@ const NetworkIcon = styled(Activity)`
   height: 16px;
 `
 
-const WalletIconBox = styled.img`
+const AvatorIcon = styled.div`
   margin-left: 0.25rem;
   margin-right: 0.5rem;
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  overflow: hidden;
+  img{
+    width: 100%;
+  }
 `
 
 // we want the latest one to come first, so return negative if a is after b
@@ -163,11 +174,24 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
   return null
 }
 
+const AWNSImg = ({name}: any) => {
+  const isImg = (url: any) => {
+    if(typeof url === 'string'){
+      return /\.(jpg|jpeg|png|gif|webp)(?:\?.*)?$/i
+    }else{
+      return false
+    }
+  }
+  const path = useImgData(name)
+  return name && isImg(path) ? <img src={path} alt="" /> : <Avatar style={{background: '#282A54'}} size={28} icon={<UserOutlined />} />
+}
+
 function Web3StatusInner() {
   const { t } = useTranslation()
   const { account, connector, error } = useWeb3React()
 
   const { ENSName } = useENSName(account ?? undefined)
+  const AWNSName = useAWNSName(account ?? undefined)
 
   const allTransactions = useAllTransactions()
 
@@ -185,14 +209,15 @@ function Web3StatusInner() {
   if (account) {
     return (
       <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
-        {!hasPendingTransactions && connector && <WalletIconBox src={WalletIcon} />}
+        {/* {!hasPendingTransactions && connector && <WalletIconBox src={WalletIcon} />} */}
         {hasPendingTransactions ? (
           <RowBetween>
             <Text style={{ color: theme.text1 }}>{pending?.length} Pending</Text> <Loader stroke={theme.text1} />
           </RowBetween>
         ) : (
           <>
-            <Text>{ENSName || shortenAddress(account)}</Text>
+            {<AvatorIcon><AWNSImg name={AWNSName}/></AvatorIcon>}
+            <Text>{ENSName || AWNSName || shortenAddress(account)}</Text>
           </>
         )}
         {/* {!hasPendingTransactions && connector && <StatusIcon connector={connector} />} */}
@@ -219,7 +244,6 @@ export default function Web3Status() {
   const contextNetwork = useWeb3React(NetworkContextName)
 
   const { ENSName } = useENSName(account ?? undefined)
-
   const allTransactions = useAllTransactions()
 
   const sortedRecentTransactions = useMemo(() => {

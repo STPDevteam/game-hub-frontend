@@ -12,18 +12,16 @@ import Game from './Game'
 // import Transactions from './Predict/Transactions'
 import './App.less'
 import Dashboard from './Dashboard'
+import GameDetail from './Game/GameDetail'
+import Reward from './Reward'
+import Guide from './Guide'
+import GuideDetail from './Guide/GuideDetail'
 
 const AppWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   overflow-x: hidden;
-`
-
-const HeaderWrapper = styled.div`
-  ${({ theme }) => theme.flexRowNoWrap}
-  width: 100%;
-  justify-content: space-between;
 `
 
 const BodyWrapper = styled.div`
@@ -34,13 +32,6 @@ const BodyWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 10;
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-      padding: 16px;
-  `};
-
-  z-index: 1;
 `
 
 const Marginer = styled.div`
@@ -52,24 +43,26 @@ export default function App() {
     <Suspense fallback={null}>
       <HashRouter>
         <Route component={DarkModeQueryParamReader} />
-        <WalletProvider>
-          <AppWrapper>
-            <HeaderWrapper>
+          <WalletProvider>
+            <AppWrapper>
               <Header />
-            </HeaderWrapper>
-            <BodyWrapper>
-              <Popups />
-              <Web3ReactManager>
-                <Switch>
-                  <Route exact strict path="/" component={Game} />
-                  <Route exact strict path="/game" component={Game} />
-                  <Route exact strict path="/dashboard" component={Dashboard} />
-                </Switch>
-              </Web3ReactManager>
-              <Marginer />
-            </BodyWrapper>
-          </AppWrapper>
-        </WalletProvider>
+              <BodyWrapper>
+                <Popups />
+                <Web3ReactManager>
+                  <Switch>
+                    <Route exact strict path="/" component={Game} />
+                    <Route exact strict path="/game" component={Game} />
+                    <Route exact strict path="/game/:name" component={GameDetail} />
+                    <Route exact strict path="/dashboard" component={Dashboard} />
+                    <Route exact strict path="/reward" component={Reward} />
+                    <Route exact strict path="/guide" component={Guide} />
+                    <Route exact strict path="/guide/:name" component={GuideDetail} />
+                  </Switch>
+                </Web3ReactManager>
+                <Marginer />
+              </BodyWrapper>
+            </AppWrapper>
+          </WalletProvider>
       </HashRouter>
     </Suspense>
   )
