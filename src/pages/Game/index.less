@@ -62,8 +62,30 @@
                 margin-bottom: 30px;
             }            
         }
+        .slick-dots{
+            bottom: 0;
+            left: 0;
+            text-align: right;
+            padding-right: 20px;
+            padding-bottom: 6px;
+            li {
+                width: 30px;
+                &.slick-active button:before{
+                    background-color: rgba(255, 255, 255);
+                }
+                button{
+                    &::before{
+                        content: '';
+                        width: 30px;
+                        height: 4px;
+                        border-radius: 2px;
+                        background-color: rgba(255, 255, 255, 0.3);
+                    }
+                }
+            }
+        }
         .intro{
-            display: grid;
+            display: grid!important;
             grid-template-columns: 70% 30%;
             justify-content: center;
             align-items: center;
@@ -73,16 +95,21 @@
             &>div{
                 img{
                     width: 100%;
+                    height: 460px;
+                    @media (max-width: 768px) {
+                        height: 190px;
+                    }
                 }
                 &:last-of-type{
-                    padding: 40px 50px;
+                    padding: 40px;
                     background: #17193B;
-                    margin-left: -10%;
+                    margin-left: -5%;
                     border-radius: 20px;
                     height: 100%;
                     @media (max-width: 768px) {
                         margin-left: 0;
                         margin-top: -5%;
+                        height: 330px;
                     }
                 }
             }
