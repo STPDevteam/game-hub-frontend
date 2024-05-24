@@ -31,7 +31,7 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
         <h1><span>Games</span> / {data.name}</h1>
         <div className='intro'>
           <div>
-            <img src={data?.images && data?.images[0]} alt="" />
+            <img src={data?.img && data?.img} alt="" />
           </div>
           <div>
             <div className='head'>

@@ -7,6 +7,7 @@
         "supportedChain": [1, 8453],
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/ancient-forest/game-tutorial",
         "bg":"./images/AncientForest/bg.png",
+        "img": "./images/AncientForest/img1.jpg",
         "images":["./images/AncientForest/img1.jpg", "./images/AncientForest/img2.jpg", "./images/AncientForest/img3.jpg", "./images/AncientForest/img4.png"]
     },
     {
@@ -17,6 +18,7 @@
         "supportedChain": [1, 8453],
         "guide":"https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service",
         "bg":"./images/Dynamic/bg.png",
+        "img": "./images/Dynamic/img1.jpg",
         "images":["./images/Dynamic/img1.jpg", "./images/Dynamic/img2.jpg", "./images/Dynamic/img3.jpg", "./images/Dynamic/img4.jpg"]
     },
     {
@@ -27,6 +29,7 @@
         "supportedChain": [5151706],
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/dice",
         "bg":"./images/Dice/bg.png",
+        "img": "./images/Dice/img1.png",
         "images":["./images/Dice/img1.png", "./images/Dice/img2.png", "./images/Dice/img3.png", "./images/Dice/img4.png"]
     },
     {
@@ -38,6 +41,7 @@
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/eternal-legacy",
         "bg":"./images/EternalLegacy/bg.png",
         "avatar": "./images/EternalLegacy/avatar.png",
-        "images":["./images/EternalLegacy/img1.png", "./images/EternalLegacy/img2.png", "./images/EternalLegacy/img3.png","./images/EternalLegacy/img4.png"]
+        "img": "./images/EternalLegacy/img1.png",
+        "images":["./images/EternalLegacy/img1.jpg", "./images/EternalLegacy/img2.jpg", "./images/EternalLegacy/img3.jpg","./images/EternalLegacy/img4.jpg"]
     }
 ]
