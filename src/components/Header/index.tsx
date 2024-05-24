@@ -340,7 +340,7 @@ export default function Header() {
       <div className='top'>
         <div>
         <StarIcon/><StarIcon/><StarIcon/>&nbsp;&nbsp;&nbsp;Eternal Legacy is Now in Beta with Bounty Rewards&nbsp;&nbsp;&nbsp;<StarIcon/><StarIcon/><StarIcon/>
-        <Button onClick={window.open('https://eternallegacy.xyz/')}>Play Beta</Button>
+        <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Play Beta</Button>
         </div>
       </div>
     <HeaderFrame ref={headerRef} className={`${isNavbarSticky ? 'sticky' : ''}`}>
