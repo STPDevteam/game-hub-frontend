@@ -38,7 +38,7 @@ const HeaderFrame = styled.div`
   width: 100%;
   position: fixed;
   z-index: 1000;
-  top: 80px;
+  top: 71px;
   @media (max-width: 768px) {
     top: 0;
   }
@@ -249,6 +249,7 @@ export default function Header() {
   const [isNavVisible, setNavVisibility] = useState(false);
   const [networkValue, setNetworkValue] = useState(chainId)
   const [isNavbarSticky, setIsNavbarSticky] = useState(false);
+  const [isTopClose, setIsTopClose] = useState(false);
   const headerRef: any = useRef(null);
 
   const fixNavBar = () => {
@@ -325,7 +326,7 @@ export default function Header() {
     }
   ]
 
-  const handleMenuClick: MenuProps['onClick'] = e => {
+  const handleMenuClick: MenuProps['onClick'] = (e: any) => {
     switchNetwork(Number(e.key))
   };
   
@@ -336,13 +337,18 @@ export default function Header() {
   
 
   return (
-    <div>
-      <div className='top'>
+    <div className={`header ${isTopClose ? 'close' : ''}`}>
+      {!isTopClose && <div className='top'>
         <div>
-        <StarIcon/><StarIcon/><StarIcon/>&nbsp;&nbsp;&nbsp;Eternal Legacy is Now in Beta with Bounty Rewards&nbsp;&nbsp;&nbsp;<StarIcon/><StarIcon/><StarIcon/>
-        <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Play Beta</Button>
+          <div>
+          <StarIcon/><StarIcon/><StarIcon/>&nbsp;&nbsp;&nbsp;Clique’s Flagship Game: Eternal Legacy is Now in Beta with Bounty Rewards&nbsp;&nbsp;&nbsp;<StarIcon/><StarIcon/><StarIcon/>
+          </div>
+          <div>
+            <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Play Beta</Button>
+            <Button onClick={() => {setIsTopClose(true)}}>Close</Button>
+          </div>
         </div>
-      </div>
+      </div>}
     <HeaderFrame ref={headerRef} className={`${isNavbarSticky ? 'sticky' : ''}`}>
       <RowBetweenDiv>
         <button onClick={toggleNav} className="Burger">

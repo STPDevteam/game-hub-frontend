@@ -23,7 +23,6 @@ const AppWrapper = styled.div`
 `
 
 const BodyWrapper = styled.div`
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   width: 100%;
