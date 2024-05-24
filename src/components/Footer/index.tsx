@@ -8,7 +8,7 @@ export default function Footer() {
             <div><img src={StartGroup}/></div>       
             <div>Eternal Legacy is Now in Beta with Bounty Rewards</div>
             <div>
-            <Button onClick={window.open('https://eternallegacy.xyz/')}>Play Beta</Button>
+            <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Play Beta</Button>
             </div>
         </div>
     </div>
