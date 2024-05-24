@@ -2,20 +2,19 @@ import React, { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import WalletProvider from 'contexts/AppContext'
+import { Button } from 'antd';
 import Header from '../components/Header'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import Game from './Game'
-// import Predict from './Predict'
-// import PredictDetail from './Predict/PredictDetail'
-// import Transactions from './Predict/Transactions'
-import './App.less'
 import Dashboard from './Dashboard'
 import GameDetail from './Game/GameDetail'
 import Reward from './Reward'
 import Guide from './Guide'
 import GuideDetail from './Guide/GuideDetail'
+import { ReactComponent as StarIcon } from  'assets/images/star.svg'
+import './App.less'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -25,6 +24,7 @@ const AppWrapper = styled.div`
 `
 
 const BodyWrapper = styled.div`
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -32,6 +32,9 @@ const BodyWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  @media (max-width: 768px) {
+    padding-top: 0;
+  }
 `
 
 const Marginer = styled.div`
@@ -61,6 +64,15 @@ export default function App() {
                 </Web3ReactManager>
                 <Marginer />
               </BodyWrapper>
+              <div className='bottom'>
+                <div>
+                <div><StarIcon/><StarIcon/><StarIcon/></div>       
+                <div>Eternal Legacy is Now in Beta with Bounty Rewards</div>
+                <div>
+                <Button onClick={window.open('https://eternallegacy.xyz/')}>Play Beta</Button>
+                </div>
+                </div>
+              </div>
             </AppWrapper>
           </WalletProvider>
       </HashRouter>
