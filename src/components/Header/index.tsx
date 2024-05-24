@@ -48,7 +48,6 @@ const HeaderFrame = styled.div`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 12px;
     width: calc(100%);
-    position: relative;
   `};
 `
 
