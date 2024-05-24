@@ -23,7 +23,7 @@ import './index.less'
 const RowBetweenDiv = styled(RowBetween)`
   max-width: 1240px;
   margin: 0 auto;
-  padding: 3rem 4rem;
+  padding: 2rem 4rem;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 0 1rem;
   `};
@@ -62,13 +62,13 @@ const HeaderLogoDiv = styled.div`
 const HeaderNavBox = styled.div`
   display: flex;
   align-items: center;
-  height: 44px;
+  height: 50px;
   border-radius: 8px;
   gap: 20px;
   padding: 0 20px;
   background-color: rgba(255,255,255, 0.08);
   border: 1px solid rgba(255,255,255, 0.14);
-  border-radius: 20px;
+  border-radius: 25px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     flex-direction: column;
     background-color: var(--background);
@@ -226,7 +226,7 @@ const StyledNavLink = styled(NavLink).attrs({
     font-weight: 600;
     background: #0049C6;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 25px;
     :hover,
     :focus {
       color: #fff;
