@@ -344,7 +344,7 @@ export default function Header() {
           <StarIcon/><StarIcon/><StarIcon/>&nbsp;&nbsp;&nbsp;Clique’s Flagship Game: Eternal Legacy is Now in Beta with Bounty Rewards&nbsp;&nbsp;&nbsp;<StarIcon/><StarIcon/><StarIcon/>
           </div>
           <div>
-            <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Play Beta</Button>
+            <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Battle Now</Button>
             <Button onClick={() => {setIsTopClose(true)}}>Close</Button>
           </div>
         </div>

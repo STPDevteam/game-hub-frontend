@@ -10,7 +10,7 @@ export default function Footer() {
             <div><img src={StartGroup}/></div>       
             <div>Clique’s Flagship Game: Eternal Legacy is Now in Beta with Bounty Rewards</div>
             <div>
-            <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Play Beta</Button>
+            <Button onClick={() => {window.open('https://eternallegacy.xyz/')}}>Battle Now</Button>
             <Button onClick={() => {setClose(true)}}>close</Button>
             </div>
         </div>
