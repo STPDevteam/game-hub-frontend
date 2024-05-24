@@ -13,6 +13,7 @@ import Logo from '../../assets/images/logo.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
+import { ReactComponent as StarIcon } from  'assets/images/star.svg'
 
 import { YellowCard } from '../Card'
 
@@ -35,17 +36,18 @@ const HeaderFrame = styled.div`
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  top: 0;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
+  top: 80px;
+  @media (max-width: 768px) {
+    top: 0;
+  }
   &.sticky{
     background: var(--background);
-    position: fixed;
   }
   ${({ theme }) => theme.mediaWidth.upToSmall`
     padding: 12px;
     width: calc(100%);
-    position: relative;
   `};
 `
 
@@ -334,6 +336,13 @@ export default function Header() {
   
 
   return (
+    <div>
+      <div className='top'>
+        <div>
+        <StarIcon/><StarIcon/><StarIcon/>&nbsp;&nbsp;&nbsp;Eternal Legacy is Now in Beta with Bounty Rewards&nbsp;&nbsp;&nbsp;<StarIcon/><StarIcon/><StarIcon/>
+        <Button onClick={window.open('https://eternallegacy.xyz/')}>Play Beta</Button>
+        </div>
+      </div>
     <HeaderFrame ref={headerRef} className={`${isNavbarSticky ? 'sticky' : ''}`}>
       <RowBetweenDiv>
         <button onClick={toggleNav} className="Burger">
@@ -434,5 +443,6 @@ export default function Header() {
         </HeaderControls>
       </RowBetweenDiv>
     </HeaderFrame>
+    </div>
   )
 }
