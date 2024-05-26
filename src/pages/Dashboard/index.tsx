@@ -157,7 +157,7 @@ export default function Dashboard() {
                             </div>
                             {currentName === data.name && <div className='current'>Current</div>}
                             <div className='view'>
-                              <Button type='default' onClick={() =>{window.open(`https://awnsbase.stp.network/nameDetail?name=${data.name}`)}}>View</Button>
+                              <Button type='default' onClick={() =>{window.open(`https://awnsbase.stp.network/nameDetail?name=${data.name}`)}}>Learn More</Button>
                               <Button type='primary' onClick={() =>{switchCurrentName(data.name)}}>Switch</Button>
                             </div>
                           </div>
@@ -174,7 +174,7 @@ export default function Dashboard() {
                           </div>
                           {currentName === data.name && <div className='current'>Current</div>}
                           <div className='view'>
-                            <Button type='default' onClick={() =>{window.open(`https://awnsbase.stp.network/nameDetail?name=${data.name}`)}}>View</Button>
+                            <Button type='default' onClick={() =>{window.open(`https://awnsbase.stp.network/nameDetail?name=${data.name}`)}}>Learn More</Button>
                             <Button type='primary' onClick={() =>{switchCurrentName(data.name)}}>Switch</Button>
                           </div>
                         </div>
