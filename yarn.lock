@@ -4461,7 +4461,6 @@
 
 "@types/lodash.unionby@^4.8.6":
   version "4.8.6"
-  resolved "https://registry.nlark.com/@types/lodash.unionby/download/@types/lodash.unionby-4.8.6.tgz#e95f45792cbb7ddaab26eb60773e179d464dd742"
   integrity sha1-6V9FeSy7fdqrJutgdz4XnUZN10I=
   dependencies:
     "@types/lodash" "*"
