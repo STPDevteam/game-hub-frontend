@@ -6,6 +6,7 @@ import { Tabs, Avatar, Button, Spin, Empty } from 'antd';
 import { DoubleRightOutlined, UserOutlined, LoadingOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import { ChainId } from 'constants/chainId';
+import { useGames } from 'pages/Guide/hooks';
 import { useAWNSNames } from 'hooks/useAWNSNames'
 import { useAccountByName } from 'hooks/useAccountByName'
 import { useImgData } from './hook'
@@ -39,10 +40,7 @@ export default function Dashboard() {
   const [currentName, setCurrentName] = useState<string>('')
   const names = useAWNSNames(account || '')
   const { tokenBoundAccount, nftAddress, tokenId } = useAccountByName(currentName);
-  console.log('names:', names)
-  console.log('nftAddress:', nftAddress)
-  console.log('tokenId:', tokenId)
-
+  const games = useGames()
   const nftData = useToken721BalanceTokens(tokenBoundAccount || '', chainId || ChainId.MAINNET)
   console.log('nftData:', nftData)
 
@@ -186,30 +184,14 @@ export default function Dashboard() {
                       {/* <div className='extra-btn'>{'Points Record  >>'}</div> */}
                     </h2>
                     <Slider {...settings2}>
-                      <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
-                        <img src={Game1} alt="" />
-                        <div className='name'>
-                          <h3>Eternal Legacy</h3>
+                      {games.map((game: any) => 
+                        <div className='card' key={game.id} onClick={() => {history.push(`/game/${game.id}`)}}>
+                          <img src={game.card} alt="" />
+                          <div className='name'>
+                            <h3>{game.name}</h3>
+                          </div>
                         </div>
-                      </div>
-                      <div className='card' onClick={() => {history.push('/game/dynamicavatar')}}>
-                        <img src={Game2} alt="" />
-                        <div className='name'>
-                          <h3>Dynamic avatar(Beta)</h3>
-                        </div>
-                      </div>
-                      <div className='card' onClick={() => {history.push('/game/dice')}}>
-                        <img src={Game3} alt="" />
-                        <div className='name'>
-                          <h3>DICE</h3>
-                        </div>
-                      </div>
-                      <div className='card' onClick={() => {history.push('/game/ancientforest')}}>
-                        <img src={Game4} alt="" />
-                        <div className='name'>
-                          <h3>Ancient Forest</h3>
-                        </div>
-                      </div>
+                      )}
                     </Slider>
                 </div>
                 <div className='section1'>
@@ -252,33 +234,14 @@ export default function Dashboard() {
                     <div className='extra-btn'>{'More  >>'}</div>
                   </h2>
                   <div className='popular-games'>
-                    <div onClick={() => {history.push('/game/dynamicavatar')}}>
-                      <div>
-                        <img src={Game2} alt="Popular Game" />
+                    {games.map((game: any) => 
+                      <div key={game.id} onClick={() => {history.push(`/game/${game.id}`)}}>
+                        <img src={game.card} alt="" />
+                        <div className='name'>
+                          <h3>{game.name}</h3>
+                        </div>
                       </div>
-                      <div>
-                        <h3>Dynamic avatar(Beta)</h3>
-                        {/* <p><LikeIcon/> 13,300</p> */}
-                      </div>
-                    </div>
-                    <div  onClick={() => {history.push('/game/dice')}}>
-                      <div>
-                        <img src={Game3} alt="Popular Game" />
-                      </div>
-                      <div>
-                        <h3>DICE</h3>
-                        {/* <p><LikeIcon/> 13,300</p> */}
-                      </div>
-                    </div>
-                    <div onClick={() => {history.push('/game/ancientforest')}}>
-                      <div>
-                        <img src={Game4} alt="Popular Game" />
-                      </div>
-                      <div>
-                        <h3>Ancient Forest</h3>
-                        {/* <p><LikeIcon/> 13,300</p> */}
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </div>
                 {/* <div>

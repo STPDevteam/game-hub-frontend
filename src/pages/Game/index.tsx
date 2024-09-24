@@ -2,21 +2,19 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import Slider from "react-slick";
 import { useHistory } from 'react-router-dom'
+import { useGames } from 'pages/Guide/hooks';
 import EternaLegacyImg from 'assets/images/EternaLegacyImg.png'
 import Forest1 from 'assets/images/forest1.png'
 import UpcomingGame1 from 'assets/images/upcoming_game_1.jpg'
 import UpcomingGame2 from 'assets/images/upcoming_game_2.png'
 import UpcomingGame3 from 'assets/images/upcoming_game_3.png'
-import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.jpg'
-import Game3 from 'assets/images/game_3.png'
-import Game4 from 'assets/images/game_4.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './index.less'
 
 
 export default function Game() {
   const history = useHistory();
+  const games = useGames()
   const settings = {
     dots: true,
     infinite: true,
@@ -69,49 +67,20 @@ export default function Game() {
                   <h3>ARCADE WORLD</h3>
                 </div>
               </div>
-              {/* <div className='card'>
-                <img src={UpcomingGame2} alt="" />
-                <div className='name'>
-                  <h3>Adventure Forge</h3>
-                </div>
-              </div>
-              <div className='card'>
-                <img src={UpcomingGame3} alt="" />
-                <div className='name'>
-                  <h3>DICE</h3>
-                </div>
-              </div> */}
-            {/* </Slider> */}
           </div>
         </div>
       </div>
       <div className='section4'>
         <h2>All Games</h2>
         <div>
-          <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
-            <img src={Game1} alt="" />
-            <div className='name'>
-              <h3>Eternal Legacy</h3>
+          {games.map((game: any) => 
+            <div className='card' key={game.id} onClick={() => {history.push(`/game/${game.id}`)}}>
+              <img src={game.card} alt="" />
+              <div className='name'>
+                <h3>{game.name}</h3>
+              </div>
             </div>
-          </div>
-          <div className='card' onClick={() => {history.push('/game/dynamicavatar')}}>
-            <img src={Game2} alt="" />
-            <div className='name'>
-              <h3>Dynamic avatar(Beta)</h3>
-            </div>
-          </div>
-          <div className='card' onClick={() => {history.push('/game/dice')}}>
-            <img src={Game3} alt="" />
-            <div className='name'>
-              <h3>DICE</h3>
-            </div>
-          </div>
-          <div className='card' onClick={() => {history.push('/game/ancientforest')}}>
-            <img src={Game4} alt="" />
-            <div className='name'>
-              <h3>Ancient Forest</h3>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

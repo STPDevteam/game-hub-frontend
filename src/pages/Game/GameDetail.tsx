@@ -3,11 +3,8 @@ import styled from 'styled-components'
 import { RouteComponentProps } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { getChain } from 'constants/index'
+import { useGames } from 'pages/Guide/hooks';
 import { useGameDetail } from './hooks'
-import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.jpg'
-import Game3 from 'assets/images/game_3.png'
-import Game4 from 'assets/images/game_4.png'
 import BaseChain from 'assets/svg/base.svg'
 import MainnetChain from 'assets/svg/eth.png'
 import { ReactComponent as WebsiteIcon } from  'assets/images/website.svg'
@@ -15,14 +12,23 @@ import { ReactComponent as WebsiteIcon } from  'assets/images/website.svg'
 import './GameDetail.less'
 
 
-export default function GameDetail(props: RouteComponentProps<{ name: string }>) {
+export default function GameDetail(props: RouteComponentProps<{ id: string }>) {
   const {
     match: {
-      params: { name }
+      params: { id }
     }
   } = props
-  const data = useGameDetail(name);
+  const data = useGameDetail(id);
   const history = useHistory();
+  const games = useGames()
+  console.log('id', id)
+  const gamesData = [...games]
+  if(games.length > 0){
+    const index = games.findIndex((game: any) => game.id === id)
+    if(index >= 0){
+      gamesData.splice(index, 1)
+    }
+  }
 
   return (
     <div className="container-gamedetail">
@@ -75,7 +81,15 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
       <div className='section4'>
         <h2>Featured Games</h2>
         <div>
-          {data.name !== 'Eternal Legacy' && <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
+          {gamesData.map((game: any) => 
+            <div className='card' key={game.id} onClick={() => {history.push(`/game/${game.id}`)}}>
+              <img src={game.card} alt="" />
+              <div className='name'>
+                <h3>{game.name}</h3>
+              </div>
+            </div>
+          )}
+          {/* {data.name !== 'Eternal Legacy' && <div className='card' onClick={() => {history.push('/game/eternallegacy')}}>
             <img src={Game1} alt="" />
             <div className='name'>
               <h3>Eternal Legacy</h3>
@@ -98,7 +112,7 @@ export default function GameDetail(props: RouteComponentProps<{ name: string }>)
             <div className='name'>
               <h3>Ancient Forest</h3>
             </div>
-          </div>}
+          </div>} */}
         </div>
       </div>
     </div>
