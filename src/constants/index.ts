@@ -154,7 +154,7 @@ const initialChains: BaseChain[] = [
     vmType: 'EVM',
     rpcUrl: 'https://rpc.lootchain.com/http',
   },{
-    id: ChainId.BSC,
+    id: 56,
     icon: BSCChain,
     name: 'BSC',
     token: '',
@@ -165,7 +165,7 @@ const initialChains: BaseChain[] = [
     rpcUrl: ''
   },
   {
-    id: ChainId.SCROLL,
+    id: 534352,
     icon: SCROLLChain,
     name: 'Scroll',
     token: '',

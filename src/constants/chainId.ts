@@ -14,8 +14,6 @@ export enum ChainId {
   ZKSYNCTEST = 280,
   LOOT = 5151706,
   TAIKO = 167008,
-  BSC = 56,
   BNB_TEST = 97,
   KLAY_TEST = 1001,
-  SCROLL = 534352,
 }
