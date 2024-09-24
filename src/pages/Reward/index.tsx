@@ -4,14 +4,14 @@ import { Tabs, Tag, Progress } from 'antd';
 import { DoubleRightOutlined } from '@ant-design/icons';
 import { useActiveWeb3React } from '../../hooks'
 import Awns from 'assets/images/awns.png'
-import Game1 from 'assets/images/game_1.png'
-import Game2 from 'assets/images/game_2.jpg'
-import Game3 from 'assets/images/game_3.png'
-import Game4 from 'assets/images/game_4.png'
-import Game5 from 'assets/images/game_5.png'
-import Game6 from 'assets/images/game_6.png'
-import Game7 from 'assets/images/game_7.png'
-import Game8 from 'assets/images/game_8.png'
+// import Game1 from 'assets/images/game_1.png'
+// import Game2 from 'assets/images/game_2.jpg'
+// import Game3 from 'assets/images/game_3.png'
+// import Game4 from 'assets/images/game_4.png'
+// import Game5 from 'assets/images/game_5.png'
+// import Game6 from 'assets/images/game_6.png'
+// import Game7 from 'assets/images/game_7.png'
+// import Game8 from 'assets/images/game_8.png'
 import { ReactComponent as NextIcon } from  'assets/images/next.svg'
 import './index.less'
 
@@ -81,7 +81,7 @@ export default function Reward() {
       <div className='section2'>
         <Tabs defaultActiveKey="1" >
           <Tabs.TabPane tab="Level 1" key="1">
-            <div className='games'>
+            {/* <div className='games'>
               <div className='card2'>
                 <img src={Game1} alt="" />
                 <div className='name'>
@@ -130,7 +130,7 @@ export default function Reward() {
                   <div>NFT Name#8</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </Tabs.TabPane>
           <Tabs.TabPane tab="Level 2" key="2">
             Content of Tab Pane 2

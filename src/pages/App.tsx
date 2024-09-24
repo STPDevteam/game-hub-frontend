@@ -53,11 +53,11 @@ export default function App() {
                   <Switch>
                     <Route exact strict path="/" component={Game} />
                     <Route exact strict path="/game" component={Game} />
-                    <Route exact strict path="/game/:name" component={GameDetail} />
+                    <Route exact strict path="/game/:id" component={GameDetail} />
                     <Route exact strict path="/dashboard" component={Dashboard} />
                     <Route exact strict path="/reward" component={Reward} />
                     <Route exact strict path="/guide" component={Guide} />
-                    <Route exact strict path="/guide/:name" component={GuideDetail} />
+                    <Route exact strict path="/guide/:id" component={GuideDetail} />
                   </Switch>
                 </Web3ReactManager>
                 <Marginer />
