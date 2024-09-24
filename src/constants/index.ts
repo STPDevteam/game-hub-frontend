@@ -5,6 +5,10 @@ import { injected } from '../connectors'
 import BaseChain from 'assets/svg/base.svg'
 import MainnetChain from 'assets/svg/eth.png'
 import LootChain from 'assets/svg/loot.svg'
+import BSCChain from 'assets/svg/bsc.svg'
+import SCROLLChain from 'assets/svg/Scroll.png'
+import ZKSYNCChain from 'assets/svg/zkSync.jpg'
+import POLYGONChain from 'assets/svg/polygon.svg'
 
 export const timeframeOptions = {
   WEEK: '1 week',
@@ -149,6 +153,49 @@ const initialChains: BaseChain[] = [
     scanName: 'Lootscan',
     vmType: 'EVM',
     rpcUrl: 'https://rpc.lootchain.com/http',
+  },{
+    id: ChainId.BSC,
+    icon: BSCChain,
+    name: 'BSC',
+    token: '',
+    tokenSymbol: 'BSC',
+    scanUrl: '',
+    scanName:'',
+    vmType: '',
+    rpcUrl: ''
+  },
+  {
+    id: ChainId.SCROLL,
+    icon: SCROLLChain,
+    name: 'Scroll',
+    token: '',
+    tokenSymbol: 'Scroll',
+    scanUrl: '',
+    scanName:'',
+    vmType: '',
+    rpcUrl: ''
+  },
+  {
+    id: ChainId.ZKSYNC,
+    icon: ZKSYNCChain,
+    name: 'zkSync',
+    token: '',
+    tokenSymbol: 'zkSync',
+    scanUrl: '',
+    scanName:'',
+    vmType: '',
+    rpcUrl: ''
+  },
+  {
+    id: ChainId.POLYGON,
+    icon: POLYGONChain,
+    name: 'Polygon',
+    token: '',
+    tokenSymbol: 'Matic',
+    scanUrl: '',
+    scanName:'',
+    vmType: '',
+    rpcUrl: ''
   }
 ]
 

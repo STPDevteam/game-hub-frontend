@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { getChain } from 'constants/index'
 import { useGames } from 'pages/Guide/hooks';
 import { useGameDetail } from './hooks'
-import BaseChain from 'assets/svg/base.svg'
+import More from 'assets/svg/more.png'
 import MainnetChain from 'assets/svg/eth.png'
 import { ReactComponent as WebsiteIcon } from  'assets/images/website.svg'
 
@@ -51,8 +51,10 @@ export default function GameDetail(props: RouteComponentProps<{ id: string }>) {
                 <div>
                     Support Chains: 
                     {data?.supportedChain && data?.supportedChain.length > 0 ? data?.supportedChain.map((chain: number) => 
-                      <img src={getChain(chain)?.icon} alt="Base"/>
+                      <img src={getChain(chain)?.icon} alt={getChain(chain)?.name}/>
                     ): '--'}
+                    {data.id === 'robotsfarm' && <img src={More}/>}
+                    {data.id === 'llc' && <img src={More}/>}
                 </div>
                 <div>
                     {/* Players: <span>2,300</span> */}

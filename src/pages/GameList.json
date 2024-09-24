@@ -4,7 +4,7 @@
         "name":"Robots.Farm",
         "description": "Robots.Farm is a Gamified Trading Platform that seamlessly merges decentralized finance with a captivating gaming experience",
         "website":"https://robots.farm/",
-        "supportedChain": [8453, 324],
+        "supportedChain": [8453, 56, 324, 534352],
         "guide":"https://docs.robots.farm/",
         "bg":"./images/robots.farm/banner.png",
         "img": "./images/robots.farm/1.png",
@@ -40,11 +40,11 @@
         "name":"Yacht C",
         "description": "A blockchain-powered adaptation of the beloved dice game Yahtzee, Yacht C combines classic gameplay with decentralized ownership and play-to-earn mechanics.",
         "website":"https://yachtc.xyz/",
-        "supportedChain": [1, 8453],
+        "supportedChain": [8453],
         "guide":"https://yachtc.xyz/",
-        "bg":"./images/yacht-c/1.png",
+        "bg":"./images/yacht-c/banner.jpg",
         "img": "./images/yacht-c/1.png",
-        "card": "./images/yacht-c/1.png",
+        "card": "./images/yacht-c/banner.jpg",
         "images":["./images/yacht-c/1.png", "./images/yacht-c/2.png", "./images/yacht-c/3.png", "./images/yacht-c/4.png"]
     },
     {
