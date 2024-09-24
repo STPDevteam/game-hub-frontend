@@ -1,5 +1,53 @@
 [
     {
+        "id": "robotsfarm",
+        "name":"Robots.Farm",
+        "description": "Robots.Farm is a Gamified Trading Platform that seamlessly merges decentralized finance with a captivating gaming experience",
+        "website":"https://robots.farm/",
+        "supportedChain": [8453, 324],
+        "guide":"https://docs.robots.farm/",
+        "bg":"./images/robots.farm/banner.png",
+        "img": "./images/robots.farm/1.png",
+        "card": "./images/robots.farm/banner.png",
+        "images":["./images/robots.farm/1.png", "./images/robots.farm/2.png", "./images/robots.farm/3.png", "./images/robots.farm/4.png"]
+    },
+    {
+        "id": "gwyn",
+        "name":"Gwyn",
+        "description": "Meet GWYN, an adorable Penguin Pet with a passion for mining Emeralds! Nurture and grow your own Gwyn and enjoy a variety of rewards.",
+        "website":"https://gwyntoken.com/",
+        "supportedChain": [8453],
+        "guide":"https://gwyn.gitbook.io/gwyn-whitepaper",
+        "bg":"./images/gwyn/banner.png",
+        "img": "./images/gwyn/1.png",
+        "card": "./images/gwyn/banner.png",
+        "images":["./images/gwyn/1.png", "./images/gwyn/2.png", "./images/gwyn/3.png", "./images/gwyn/4.png"]
+    },
+    {
+        "id": "llc",
+        "name":"Land, Labor, and Capitol",
+        "description": "LLC Tycoon Game blends strategy, resource management, and AI-powered social networks. Players buy land, extract resources, and construct production facilities, driving a dynamic in-game economy",
+        "website":"https://llcgame.io/",
+        "supportedChain": [8453, 137, 5151706],
+        "guide":"https://gamedocs.llcgame.io/",
+        "bg":"./images/llc/banner.png",
+        "img": "./images/llc/1.png",
+        "card": "./images/llc/banner.png",
+        "images":["./images/llc/1.png", "./images/llc/2.png", "./images/llc/3.png", "./images/llc/4.png"]
+    },
+    {
+        "id": "yacht-c",
+        "name":"Yacht C",
+        "description": "A blockchain-powered adaptation of the beloved dice game Yahtzee, Yacht C combines classic gameplay with decentralized ownership and play-to-earn mechanics.",
+        "website":"https://yachtc.xyz/",
+        "supportedChain": [1, 8453],
+        "guide":"https://yachtc.xyz/",
+        "bg":"./images/yacht-c/1.png",
+        "img": "./images/yacht-c/1.png",
+        "card": "./images/yacht-c/1.png",
+        "images":["./images/yacht-c/1.png", "./images/yacht-c/2.png", "./images/yacht-c/3.png", "./images/yacht-c/4.png"]
+    },
+    {
         "id": "ancientforest",
         "name":"Ancient Foreast",
         "description": "The forest is full of temptations and traps, use your wits to travel through this ancient forest, and there will be unexpected rewards.",
@@ -8,6 +56,7 @@
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/ancient-forest/game-tutorial",
         "bg":"./images/AncientForest/bg.png",
         "img": "./images/AncientForest/img1.jpg",
+        "card": "./images/AncientForest/card.png",
         "images":["./images/AncientForest/img1.jpg", "./images/AncientForest/img2.jpg", "./images/AncientForest/img3.jpg", "./images/AncientForest/img4.png"]
     },
     {
@@ -19,6 +68,7 @@
         "guide":"https://stpdao.gitbook.io/whitepaper/game-portal-awns/awns-aw-name-service",
         "bg":"./images/Dynamic/bg.png",
         "img": "./images/Dynamic/img1.jpg",
+        "card": "./images/Dynamic/card.jpg",
         "images":["./images/Dynamic/img1.jpg", "./images/Dynamic/img2.jpg", "./images/Dynamic/img3.jpg", "./images/Dynamic/img4.jpg"]
     },
     {
@@ -30,6 +80,7 @@
         "guide":"https://stpdao.gitbook.io/whitepaper/ai-games-on-clique/dice",
         "bg":"./images/Dice/bg.png",
         "img": "./images/Dice/img1.png",
+        "card": "./images/Dice/card.png",
         "images":["./images/Dice/img1.png", "./images/Dice/img2.png", "./images/Dice/img3.png", "./images/Dice/img4.png"]
     },
     {
@@ -42,6 +93,7 @@
         "bg":"./images/EternalLegacy/bg.png",
         "avatar": "./images/EternalLegacy/avatar.png",
         "img": "./images/EternalLegacy/img1.png",
+        "card": "./images/EternalLegacy/card.png",
         "images":["./images/EternalLegacy/img1.jpg", "./images/EternalLegacy/img2.jpg", "./images/EternalLegacy/img3.jpg","./images/EternalLegacy/img4.jpg"]
     }
 ]

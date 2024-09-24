@@ -8,13 +8,13 @@ import { ReactComponent as WebsiteIcon } from  'assets/images/website.svg'
 import './GuideDetail.less'
 
 
-export default function GameDetail(props: RouteComponentProps<{ name: string }>) {
+export default function GameDetail(props: RouteComponentProps<{ id: string }>) {
   const {
     match: {
-      params: { name }
+      params: { id }
     }
   } = props
-  const data = useGuideDetail(name);
+  const data = useGuideDetail(id);
   const history = useHistory();
   return (
     <div className="container-guidedetail">
