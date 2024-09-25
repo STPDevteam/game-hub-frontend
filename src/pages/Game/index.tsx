@@ -56,25 +56,12 @@ export default function Game() {
           </div>
         </Slider>
       </div>
-      <div className='section3'>
-        <div>
-          <h2>Upcoming Games</h2>
-          <div className='games'>
-            {/* <Slider {...settings}> */}
-              <div className='card'>
-                <img src={UpcomingGame1} alt="" />
-                <div className='name'>
-                  <h3>ARCADE WORLD</h3>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
       <div className='section4'>
         <h2>All Games</h2>
         <div>
           {games.map((game: any) => 
             <div className='card' key={game.id} onClick={() => {history.push(`/game/${game.id}`)}}>
+              {game.tag && <img className='tag' src={game.tag} alt="" />}
               <img src={game.card} alt="" />
               <div className='name'>
                 <h3>{game.name}</h3>

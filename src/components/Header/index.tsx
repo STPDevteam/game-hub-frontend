@@ -38,7 +38,7 @@ const HeaderFrame = styled.div`
   width: 100%;
   position: fixed;
   z-index: 1000;
-  top: 71px;
+  top: 61px;
   @media (max-width: 768px) {
     top: 0;
   }
