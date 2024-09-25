@@ -25,6 +25,7 @@ export default function Guide() {
         <div className='games'>
           {games.map((game: any) => 
             <div className='card' key={game.id} onClick={() => {window.open(`${game.guide}`)}}>
+              {game.tag && <img className='tag' src={game.tag} alt="" />}
               <img src={game.card} alt="" />
               <div className='name'>
                 <h3>{game.name}</h3>

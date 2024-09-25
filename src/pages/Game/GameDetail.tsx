@@ -85,6 +85,7 @@ export default function GameDetail(props: RouteComponentProps<{ id: string }>) {
         <div>
           {gamesData.map((game: any) => 
             <div className='card' key={game.id} onClick={() => {history.push(`/game/${game.id}`)}}>
+              {game.tag && <img className='tag' src={game.tag} alt="" />}
               <img src={game.card} alt="" />
               <div className='name'>
                 <h3>{game.name}</h3>
